@@ -31,7 +31,7 @@ public class PlayerController : PhysicsObject {
     private float droppedX;
     private float droppedY;
 
-    public float minimumDistanceToGetPlant = 1.5;
+    public float minimumDistanceToGetPlant = 1.5f;
 
     void Awake () 
     {
