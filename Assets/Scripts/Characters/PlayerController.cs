@@ -74,8 +74,8 @@ public class PlayerController : PhysicsObject {
     }
 
     void PickUpPlant() {
-        bool closeEnoughX = System.Math.Abs(transform.position.x - droppedX) < minimumDistanceToGetPlant;
-        bool closeEnoughY = System.Math.Abs(transform.position.y - droppedY) < minimumDistanceToGetPlant;
+        bool closeEnoughX = Mathf.Abs(transform.position.x - droppedX) < minimumDistanceToGetPlant;
+        bool closeEnoughY = grounded || transform.position.y < minimumDistanceToGetPlant;
 
         if (closeEnoughX && closeEnoughY) {
             carryingPlant = true;
