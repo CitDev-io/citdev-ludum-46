@@ -3,20 +3,74 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : PhysicsObject {
+    // public NoParamDelegate OnStartRunning;
+    // public NoParamDelegate OnStopRunning;
+    public NoParamDelegate OnJumpSuccessful;
+    public NoParamDelegate OnJumpFailed;
+    // public NoParamDelegate OnLanding;
+    // public BoolDelegate OnShootSuccess;
+    // public NoParamDelegate OnShootFailure;
+    public NoParamDelegate OnDropPlantSuccess;
+    public NoParamDelegate OnDropPlantFailure;
+    public NoParamDelegate OnPickupPlantSuccess;
+    public NoParamDelegate OnPickupPlantFailure;
+    public BoolDelegate OnChangeDirection;
 
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
 
-    private float _lastMove = 0f;
+    private bool carryingPlant = true;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
-    // Use this for initialization
     void Awake () 
     {
         spriteRenderer = GetComponent<SpriteRenderer> ();    
         // animator = GetComponent<Animator> ();
+    }
+
+    void Update() {
+        base.Update();
+        if (Input.GetButtonDown("UsePlant")) {
+            if (carryingPlant) {
+                AttemptToDropPlant();
+            } else {
+                AttemptToPickUpPlant();
+            }
+        }
+    }
+
+    void AttemptToDropPlant() {
+        // TODO: Check if this is a good time/place?
+        if (grounded) {
+            DropPlant();
+            return;
+        }
+
+        OnDropPlantFailure?.Invoke();
+    }
+
+    void AttemptToPickUpPlant() {
+        // TODO: Be in range?
+        if (grounded) {
+            PickUpPlant();
+            return;
+        }
+
+        OnPickupPlantFailure?.Invoke();
+    }
+
+    void DropPlant() {
+        // TODO: Drop prefab object
+        carryingPlant = false;
+        OnDropPlantSuccess?.Invoke();
+    }
+
+    void PickUpPlant() {
+        carryingPlant = true;
+        // TODO: Destroy dropped plant
+        OnPickupPlantSuccess?.Invoke();
     }
 
     protected override void ComputeVelocity()
@@ -25,8 +79,13 @@ public class PlayerController : PhysicsObject {
 
         move.x = Input.GetAxis ("Horizontal");
 
-        if (Input.GetButtonDown ("Jump") && grounded) {
-            velocity.y = jumpTakeOffSpeed;
+        if (Input.GetButtonDown ("Jump")) {
+            if (grounded) {
+                velocity.y = jumpTakeOffSpeed;
+                OnJumpSuccessful?.Invoke();
+            } else {
+                OnJumpSuccessful?.Invoke();
+            }
         } else if (Input.GetButtonUp ("Jump")) 
         {
             if (velocity.y > 0) {
@@ -39,6 +98,7 @@ public class PlayerController : PhysicsObject {
             bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
             if (flipSprite) 
             {
+                OnChangeDirection?.Invoke(!spriteRenderer.flipX);
                 spriteRenderer.flipX = !spriteRenderer.flipX;
             }
         }
