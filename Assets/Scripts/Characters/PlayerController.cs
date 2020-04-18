@@ -36,7 +36,7 @@ public class PlayerController : PhysicsObject {
     void Awake () 
     {
         spriteRenderer = GetComponent<SpriteRenderer> ();    
-        // animator = GetComponent<Animator> ();
+        animator = GetComponent<Animator> ();
     }
 
     void Update() {
@@ -106,6 +106,7 @@ public class PlayerController : PhysicsObject {
             }
         }
 
+        animator.SetBool("IsWalking", Mathf.Abs(move.x) > 0f);
 
         if (Mathf.Abs(move.x) > 0.025f) {
             bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
