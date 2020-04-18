@@ -6,11 +6,9 @@ using UnityEngine.Tilemaps;
 public class GenerateGround : MonoBehaviour
 {
     [SerializeField]
-    public Tile layableTile;
+    public List<Tile> layableTiles;
     [SerializeField]
     public Tilemap theMap;
-
-    int xPos = 0;
 
     void Start()
     {
@@ -19,10 +17,12 @@ public class GenerateGround : MonoBehaviour
 
     IEnumerator groundBuild()
     {
+        float xPos = 0f;
         while(true) 
          { 
-            Vector3Int currentCell = theMap.WorldToCell(new Vector3(0 + ++xPos, -2.2f, 0f));
-            theMap.SetTile(currentCell, layableTile);
+            xPos += 1.25f;
+            Vector3Int currentCell = theMap.WorldToCell(new Vector3(0 + xPos, -3.2f, 0f));
+            theMap.SetTile(currentCell, layableTiles[Random.Range(0, layableTiles.Count)]);
             yield return new WaitForSeconds(0.1f);
          }
      }

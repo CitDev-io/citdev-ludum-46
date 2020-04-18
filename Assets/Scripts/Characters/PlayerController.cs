@@ -20,6 +20,7 @@ public class PlayerController : PhysicsObject {
     public float jumpTakeOffSpeed = 7;
 
     private bool carryingPlant = true;
+    private Coroutine firingSequence;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -30,8 +31,13 @@ public class PlayerController : PhysicsObject {
 
     private float droppedX;
     private float droppedY;
-
+    [SerializeField]
+    private GameObject bulletPrefab;
+    [SerializeField]
+    private Transform bulletOrigin;
     public float minimumDistanceToGetPlant = 1.5f;
+    public float bulletSpeed = 100f;
+    public float bulletRate = 200f;
 
     void Awake () 
     {
@@ -86,6 +92,18 @@ public class PlayerController : PhysicsObject {
         }
     }
 
+    IEnumerator FireIfShooting()
+    {
+        var key = Random.Range(0,600);
+        while(true) 
+         { 
+            GameObject bulletClone = Instantiate(bulletPrefab, bulletOrigin);
+            Rigidbody2D rb = bulletClone.GetComponent<Rigidbody2D>();
+            rb.velocity = new Vector2((spriteRenderer.flipX ? -1f : 1f) * bulletSpeed, 0f);
+            yield return new WaitForSeconds(1f/bulletRate);
+         }
+     }
+
     protected override void ComputeVelocity()
     {
         Vector2 move = Vector2.zero;
@@ -106,6 +124,18 @@ public class PlayerController : PhysicsObject {
             }
         }
 
+        if (Input.GetButtonDown("Fire1")) {
+            if (firingSequence != null) {
+                StopCoroutine(firingSequence);
+            }
+            firingSequence = StartCoroutine(FireIfShooting());
+        }
+        if (Input.GetButtonUp("Fire1")) {
+            if (firingSequence != null) {
+                StopCoroutine(firingSequence);
+            }
+        }
+
         animator.SetBool("IsWalking", Mathf.Abs(move.x) > 0f);
 
         if (Mathf.Abs(move.x) > 0.025f) {
@@ -114,6 +144,7 @@ public class PlayerController : PhysicsObject {
             {
                 OnChangeDirection?.Invoke(!spriteRenderer.flipX);
                 spriteRenderer.flipX = !spriteRenderer.flipX;
+                bulletOrigin.transform.localPosition = new Vector3(Mathf.Abs(bulletOrigin.transform.localPosition.x) * (spriteRenderer.flipX ? -1 : 1), bulletOrigin.transform.localPosition.y, bulletOrigin.transform.localPosition.z);
             }
         }
         
