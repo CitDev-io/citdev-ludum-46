@@ -7,29 +7,41 @@ using UnityEngine;
 
 public class GameSceneManager : Singleton<GameSceneManager>
 {
+    public GameObjectDelegate OnPlantCreated;
+    public NoParamDelegate OnPlantDestroyed;
+
+    private GameObject plantInstance;
+    [SerializeField]
+    public GameObject plantPrefab;
     void Start() {
-        SubscribeToPlayerEvents();
+        SubscribeToEvents();
     }
 
     void OnDestroy() {
-        UnsubscribeFromPlayerEvents();
+        UnsubscribeFromEvents();
     }
  
-    private void SubscribeToPlayerEvents() {
+    private void SubscribeToEvents() {
         EventManager.Instance.OnPlayerPickupPlantSuccess += HandlePlayerPickedUpPlant;
         EventManager.Instance.OnPlayerDropPlantSuccess += HandlePlayerDroppedPlant;
     }
 
-    private void UnsubscribeFromPlayerEvents() {
+    private void UnsubscribeFromEvents() {
         EventManager.Instance.OnPlayerPickupPlantSuccess -= HandlePlayerPickedUpPlant;
         EventManager.Instance.OnPlayerDropPlantSuccess -= HandlePlayerDroppedPlant;
     }
 
-    private void HandlePlayerDroppedPlant() {
-        Debug.Log("I saw you drop the plant, i'm gonna make bad guys spawn");
+    private void HandlePlayerDroppedPlant(Vector3 position) {
+        var newPlant = Instantiate(plantPrefab, position, Quaternion.identity);
+        plantInstance = newPlant;
+        OnPlantCreated?.Invoke(newPlant);
+        // TODO: Do we destroy the current instance/check for it to not dup?
     }
 
     private void HandlePlayerPickedUpPlant() {
-        Debug.Log("I saw you pick up the plant, hiding bad guys");
+        if (plantInstance == null) return;
+
+        Destroy(plantInstance);
+        OnPlantDestroyed?.Invoke();
     }
 }

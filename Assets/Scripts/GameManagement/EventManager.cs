@@ -6,16 +6,64 @@ using UnityEngine;
 
 public delegate void NoParamDelegate();
 public delegate void BoolDelegate(bool Bool);
+public delegate void GameObjectDelegate(GameObject gameObject);
+public delegate void Vector3Delegate(Vector3 vector3);
 
 public class EventManager : Singleton<EventManager>
 {
     public NoParamDelegate OnPlayerJumpSuccessful;
     public NoParamDelegate OnPlayerJumpFailed;
-    public NoParamDelegate OnPlayerDropPlantSuccess;
+    public Vector3Delegate OnPlayerDropPlantSuccess;
     public NoParamDelegate OnPlayerDropPlantFailure;
     public NoParamDelegate OnPlayerPickupPlantSuccess;
     public NoParamDelegate OnPlayerPickupPlantFailure;
     public BoolDelegate OnPlayerChangeDirection;
+
+    public GameObjectDelegate OnPlantHasEnteredScene;
+    public NoParamDelegate OnPlantHasLeftScene;
+
+    [SerializeField]
+    public PlayerController currentCharacter;
+
+    void Awake() {
+        if (currentCharacter != null) {
+            SubscribeToPlayerFeed(currentCharacter);
+        }
+        SubscribeToGameFeed();
+    }
+
+    void SubscribeToGameFeed() {
+        GameSceneManager.Instance.OnPlantCreated += HandlePlantEnteredScene;
+        GameSceneManager.Instance.OnPlantDestroyed += HandlePlantLeftScene;
+    }
+
+    void UnsubscribeToGameFeed() {
+        GameSceneManager.Instance.OnPlantCreated -= HandlePlantEnteredScene;
+        GameSceneManager.Instance.OnPlantDestroyed -= HandlePlantLeftScene;
+    }
+
+    public void SubscribeToPlayerFeed(PlayerController pc) {
+        if (currentCharacter != null && currentCharacter != pc) {
+            UnsubscribeFromPlayerFeed(currentCharacter);
+        }
+        pc.OnChangeDirection += HandlePlayerChangedDirection;
+        pc.OnDropPlantFailure += HandlePlayerFailedToDropPlant;
+        pc.OnDropPlantSuccess += HandlePlayerSuccessfullyDroppedPlant;
+        pc.OnJumpFailed += HandlePlayerJumpFailed;
+        pc.OnJumpSuccessful += HandlePlayerJumpSuccessful;
+        pc.OnPickupPlantFailure += HandlePlayerFailedToPickUpPlant;
+        pc.OnPickupPlantSuccess += HandlePlayerPickedUpPlant;
+    }
+
+    void UnsubscribeFromPlayerFeed(PlayerController pc) {
+        pc.OnChangeDirection -= HandlePlayerChangedDirection;
+        pc.OnDropPlantFailure -= HandlePlayerFailedToDropPlant;
+        pc.OnDropPlantSuccess -= HandlePlayerSuccessfullyDroppedPlant;
+        pc.OnJumpFailed -= HandlePlayerJumpFailed;
+        pc.OnJumpSuccessful -= HandlePlayerJumpSuccessful;
+        pc.OnPickupPlantFailure -= HandlePlayerFailedToPickUpPlant;
+        pc.OnPickupPlantSuccess -= HandlePlayerPickedUpPlant;
+    }
 
     private void HandlePlayerJumpSuccessful() {
         OnPlayerJumpSuccessful?.Invoke();
@@ -33,8 +81,8 @@ public class EventManager : Singleton<EventManager>
         OnPlayerDropPlantFailure?.Invoke();
     }
 
-    private void HandlePlayerSuccessfullyDroppedPlant() {
-        OnPlayerDropPlantSuccess?.Invoke();
+    private void HandlePlayerSuccessfullyDroppedPlant(Vector3 v3) {
+        OnPlayerDropPlantSuccess?.Invoke(v3);
     }
 
     private void HandlePlayerFailedToPickUpPlant() {
@@ -45,36 +93,11 @@ public class EventManager : Singleton<EventManager>
         OnPlayerPickupPlantSuccess?.Invoke();
     }
 
-
-    [SerializeField]
-    public PlayerController currentCharacter;
-
-    void Awake() {
-        if (currentCharacter != null) {
-            SubscribeToPlayerFeed(currentCharacter);
-        }
+    private void HandlePlantEnteredScene(GameObject go) {
+        OnPlantHasEnteredScene?.Invoke(go);
     }
 
-    public void SubscribeToPlayerFeed(PlayerController pc) {
-        if (currentCharacter != null && currentCharacter != pc) {
-            UnsubscribeFromPlayerFeed(currentCharacter);
-        }
-        pc.OnChangeDirection += HandlePlayerChangedDirection;
-        pc.OnDropPlantFailure += HandlePlayerFailedToDropPlant;
-        pc.OnDropPlantSuccess += HandlePlayerSuccessfullyDroppedPlant;
-        pc.OnJumpFailed += HandlePlayerJumpFailed;
-        pc.OnJumpSuccessful += HandlePlayerJumpSuccessful;
-        pc.OnPickupPlantFailure += HandlePlayerFailedToPickUpPlant;
-        pc.OnPickupPlantSuccess += HandlePlayerPickedUpPlant;
-    }
-
-    public void UnsubscribeFromPlayerFeed(PlayerController pc) {
-        pc.OnChangeDirection -= HandlePlayerChangedDirection;
-        pc.OnDropPlantFailure -= HandlePlayerFailedToDropPlant;
-        pc.OnDropPlantSuccess -= HandlePlayerSuccessfullyDroppedPlant;
-        pc.OnJumpFailed -= HandlePlayerJumpFailed;
-        pc.OnJumpSuccessful -= HandlePlayerJumpSuccessful;
-        pc.OnPickupPlantFailure -= HandlePlayerFailedToPickUpPlant;
-        pc.OnPickupPlantSuccess -= HandlePlayerPickedUpPlant;
+    private void HandlePlantLeftScene() {
+        OnPlantHasLeftScene?.Invoke();
     }
 }

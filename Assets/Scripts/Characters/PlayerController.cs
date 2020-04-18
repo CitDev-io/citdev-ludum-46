@@ -10,7 +10,7 @@ public class PlayerController : PhysicsObject {
     // public NoParamDelegate OnLanding;
     // public BoolDelegate OnShootSuccess;
     // public NoParamDelegate OnShootFailure;
-    public NoParamDelegate OnDropPlantSuccess;
+    public Vector3Delegate OnDropPlantSuccess;
     public NoParamDelegate OnDropPlantFailure;
     public NoParamDelegate OnPickupPlantSuccess;
     public NoParamDelegate OnPickupPlantFailure;
@@ -64,7 +64,7 @@ public class PlayerController : PhysicsObject {
     void DropPlant() {
         // TODO: Drop prefab object
         carryingPlant = false;
-        OnDropPlantSuccess?.Invoke();
+        OnDropPlantSuccess?.Invoke(transform.position);
     }
 
     void PickUpPlant() {
