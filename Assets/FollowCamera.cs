@@ -7,15 +7,15 @@ public class FollowCamera : MonoBehaviour {
     public GameObject player;
 
 
-    private Vector3 offset; 
+    private float offset;
 
     void Start () 
     {
-        offset = transform.position - player.transform.position;
+        offset = transform.position.x - player.transform.position.x;
     }
 
     void LateUpdate () 
     {
-        transform.position = player.transform.position + offset;
+        transform.position = new Vector3(player.transform.position.x + offset, transform.position.y, transform.position.z);
     }
 }

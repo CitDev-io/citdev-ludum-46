@@ -23,7 +23,10 @@ public class PlayerController : PhysicsObject {
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-
+    [SerializeField]
+    public Sprite withPlantNoAnimationSprite;
+    [SerializeField]
+    public Sprite withoutPlantNoAnimationSprite;
     void Awake () 
     {
         spriteRenderer = GetComponent<SpriteRenderer> ();    
@@ -53,24 +56,24 @@ public class PlayerController : PhysicsObject {
 
     void AttemptToPickUpPlant() {
         // TODO: Be in range?
-        if (grounded) {
-            PickUpPlant();
-            return;
-        }
+        // if (grounded) {
+        PickUpPlant();
+        //     return;
+        // }
 
-        OnPickupPlantFailure?.Invoke();
+        //OnPickupPlantFailure?.Invoke();
     }
 
     void DropPlant() {
-        // TODO: Drop prefab object
         carryingPlant = false;
         OnDropPlantSuccess?.Invoke(transform.position);
+        spriteRenderer.sprite = withoutPlantNoAnimationSprite;
     }
 
     void PickUpPlant() {
         carryingPlant = true;
-        // TODO: Destroy dropped plant
         OnPickupPlantSuccess?.Invoke();
+        spriteRenderer.sprite = withPlantNoAnimationSprite;
     }
 
     protected override void ComputeVelocity()
