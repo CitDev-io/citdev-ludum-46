@@ -1,0 +1,956 @@
+fileFormatVersion: 2
+guid: 5df7b6d6d119a614d9266710eb1d8744
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1602315752447902623
+    second: alien-with-gun-idle_0
+  - first:
+      213: -1645288276517647391
+    second: alien-with-gun-idle_1
+  - first:
+      213: 2024463270046513244
+    second: alien-with-gun-idle_2
+  - first:
+      213: -5693067498926372631
+    second: alien-with-gun-idle_3
+  - first:
+      213: -241913445338204397
+    second: alien-with-gun-idle_4
+  - first:
+      213: -9220879639756873426
+    second: alien-with-gun-idle_5
+  - first:
+      213: 5096216354934387272
+    second: alien-with-gun-idle_6
+  - first:
+      213: -6647917662722955843
+    second: alien-with-gun-idle_7
+  - first:
+      213: 3047614575832706397
+    second: alien-with-gun-idle_8
+  - first:
+      213: -7900476822994988876
+    second: alien-with-gun-idle_9
+  - first:
+      213: -4918083402813984290
+    second: alien-with-gun-idle_10
+  - first:
+      213: 6959411635691735301
+    second: alien-with-gun-idle_11
+  - first:
+      213: -300022967092176362
+    second: alien-with-gun-idle_12
+  - first:
+      213: -6315910967971631830
+    second: alien-with-gun-idle_13
+  - first:
+      213: 8698372503139348549
+    second: alien-with-gun-idle_14
+  - first:
+      213: -5654385612030026029
+    second: alien-with-gun-idle_15
+  - first:
+      213: -5983460467121399023
+    second: alien-with-gun-idle_16
+  - first:
+      213: -2659841889744776334
+    second: alien-with-gun-idle_17
+  - first:
+      213: 8726878977017102295
+    second: alien-with-gun-idle_18
+  - first:
+      213: 4555428567005368327
+    second: alien-with-gun-idle_19
+  - first:
+      213: -4242499902759775416
+    second: alien-with-gun-idle_20
+  - first:
+      213: -8891551546277255044
+    second: alien-with-gun-idle_21
+  - first:
+      213: 2894965850812344959
+    second: alien-with-gun-idle_22
+  - first:
+      213: -3680610477416313521
+    second: alien-with-gun-idle_23
+  - first:
+      213: -5934374558197113020
+    second: alien-with-gun-idle_24
+  - first:
+      213: 8577727632665843673
+    second: alien-with-gun-idle_25
+  - first:
+      213: 1023363928736921181
+    second: alien-with-gun-idle_26
+  - first:
+      213: -1608277626604116795
+    second: alien-with-gun-idle_27
+  - first:
+      213: 6823792898594906688
+    second: alien-with-gun-idle_28
+  - first:
+      213: -8345629488787939023
+    second: alien-with-gun-idle_29
+  - first:
+      213: 6712795555431587051
+    second: alien-with-gun-idle_30
+  - first:
+      213: -6918349192136854738
+    second: alien-with-gun-idle_31
+  - first:
+      213: 1220056027455784200
+    second: alien-with-gun-idle_32
+  - first:
+      213: -8517263739344180670
+    second: alien-with-gun-idle_33
+  - first:
+      213: -8778537952783528100
+    second: alien-with-gun-idle_34
+  - first:
+      213: -1038940100724524707
+    second: alien-with-gun-idle_35
+  - first:
+      213: -3909039720014284472
+    second: alien-with-gun-idle_36
+  - first:
+      213: -4727871256813119733
+    second: alien-with-gun-idle_37
+  - first:
+      213: -4555827550444470372
+    second: alien-with-gun-idle_38
+  - first:
+      213: -8665277853717061664
+    second: alien-with-gun-idle_39
+  - first:
+      213: -5527105850242401306
+    second: alien-with-gun-idle_40
+  - first:
+      213: 6227910436802243874
+    second: alien-with-gun-idle_41
+  - first:
+      213: 652701364408459212
+    second: alien-with-gun-idle_42
+  - first:
+      213: -6782517219046676535
+    second: alien-with-gun-idle_43
+  - first:
+      213: 1594451199010811759
+    second: alien-with-gun-idle_44
+  - first:
+      213: -6804215055034303589
+    second: alien-with-gun-idle_45
+  - first:
+      213: 8829847204030296048
+    second: alien-with-gun-idle_46
+  - first:
+      213: -8123233930260249163
+    second: alien-with-gun-idle_47
+  - first:
+      213: -8547130061936539810
+    second: alien-with-gun-idle_48
+  - first:
+      213: -7304948243722317459
+    second: alien-with-gun-idle_49
+  - first:
+      213: -1192752968834867598
+    second: alien-with-gun-idle_50
+  - first:
+      213: 6863131350350782059
+    second: alien-with-gun-idle_51
+  - first:
+      213: 2248596687061386107
+    second: alien-with-gun-idle_52
+  - first:
+      213: 2010750720295267338
+    second: alien-with-gun-idle_53
+  - first:
+      213: 6186588001232544981
+    second: alien-with-gun-idle_54
+  - first:
+      213: 2981028534003983693
+    second: alien-with-gun-idle_55
+  - first:
+      213: 690098336484259425
+    second: alien-with-gun-idle_0
+  - first:
+      213: -2141929206426946108
+    second: alien-with-gun-idle_1
+  - first:
+      213: 4970837257810164637
+    second: alien-with-gun-idle_2
+  - first:
+      213: -1547974457574163548
+    second: alien-with-gun-idle_3
+  - first:
+      213: -6959153925544044893
+    second: alien-with-gun-idle_4
+  - first:
+      213: -3927189026843521302
+    second: alien-with-gun-idle_5
+  - first:
+      213: -3249819881547176435
+    second: alien-with-gun-idle_6
+  - first:
+      213: 3522224472694208308
+    second: alien-with-gun-idle_7
+  - first:
+      213: -7079245034817058652
+    second: alien-with-gun-idle_8
+  - first:
+      213: -4643695979980001411
+    second: alien-with-gun-idle_9
+  - first:
+      213: 8975563217498820693
+    second: alien-with-gun-idle_10
+  - first:
+      213: 1272463194885728142
+    second: alien-with-gun-idle_11
+  - first:
+      213: 600013059057640722
+    second: alien-with-gun-idle_12
+  - first:
+      213: -2367932515292446500
+    second: alien-with-gun-idle_13
+  - first:
+      213: -5803230448368014958
+    second: alien-with-gun-idle_14
+  - first:
+      213: 6543652701794475768
+    second: alien-with-gun-idle_15
+  - first:
+      213: -1875395498082766981
+    second: alien-with-gun-idle_16
+  - first:
+      213: -759624300654370849
+    second: alien-with-gun-idle_17
+  - first:
+      213: 4767202023167598248
+    second: alien-with-gun-idle_18
+  - first:
+      213: 1095570009023108151
+    second: alien-with-gun-idle_19
+  - first:
+      213: -1092673461142687347
+    second: alien-with-gun-idle_20
+  - first:
+      213: -5744271844902847643
+    second: alien-with-gun-idle_21
+  - first:
+      213: 7901835417294671726
+    second: alien-with-gun-idle_22
+  - first:
+      213: 6924693556965749198
+    second: alien-with-gun-idle_23
+  - first:
+      213: 7650264237516955318
+    second: alien-with-gun-idle_24
+  - first:
+      213: -8663392065701358178
+    second: alien-with-gun-idle_25
+  - first:
+      213: -8582706975785780728
+    second: alien-with-gun-idle_26
+  - first:
+      213: 5323239864355123143
+    second: alien-with-gun-idle_27
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 150
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: alien-with-gun-idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1667b3ed7c8b39900800000000000000
+      internalID: 690098336484259425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c533e43cb65642e0800000000000000
+      internalID: -2141929206426946108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_2
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9b3d0c3626fbf440800000000000000
+      internalID: 4970837257810164637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_3
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4abf9eeae6d748ae0800000000000000
+      internalID: -1547974457574163548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_4
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a69eaa306e1c6f90800000000000000
+      internalID: -6959153925544044893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e21e8ab62dad80080800000000000000
+      internalID: -9220879639756873426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_6
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 842766e16c569b640800000000000000
+      internalID: 5096216354934387272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_7
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db56a51ab1addb3a0800000000000000
+      internalID: -6647917662722955843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_8
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5dafcc4f4d4b4a20800000000000000
+      internalID: 3047614575832706397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_9
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b05d21203edb5290800000000000000
+      internalID: -7900476822994988876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed13787c3357fbbb0800000000000000
+      internalID: -4918083402813984290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_11
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5094027920cc49060800000000000000
+      internalID: 6959411635691735301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_12
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61a130673ba16dbf0800000000000000
+      internalID: -300022967092176362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_13
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2dae0110706958a0800000000000000
+      internalID: -6315910967971631830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_14
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54075a5a4b3d6b870800000000000000
+      internalID: 8698372503139348549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dededb7e369781b0800000000000000
+      internalID: -5654385612030026029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_16
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11bd2a9286a76fca0800000000000000
+      internalID: -5983460467121399023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_17
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2731f0bc4e7561bd0800000000000000
+      internalID: -2659841889744776334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_18
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dfbdee413a1c1970800000000000000
+      internalID: 8726878977017102295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_19
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70095006522283f30800000000000000
+      internalID: 4555428567005368327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 843df50f0dc9f15c0800000000000000
+      internalID: -4242499902759775416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_21
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c78a1166afcda9480800000000000000
+      internalID: -8891551546277255044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_22
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7a6e866a1cfc2820800000000000000
+      internalID: 2894965850812344959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_23
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4d05018548dbecc0800000000000000
+      internalID: -3680610477416313521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_24
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44f9b8ee7cdd4ada0800000000000000
+      internalID: -5934374558197113020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d7991dc5d53a0770800000000000000
+      internalID: 8577727632665843673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_26
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d56ff483218b33e00800000000000000
+      internalID: 1023363928736921181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-idle_27
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c4ad0605004ea9e0800000000000000
+      internalID: -1608277626604116795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

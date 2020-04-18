@@ -1,0 +1,362 @@
+fileFormatVersion: 2
+guid: 51dab146f8826b9429abfea8df730c0a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4008271087787333932
+    second: alien-with-gun-walking_0
+  - first:
+      213: -8238842380437710082
+    second: alien-with-gun-walking_1
+  - first:
+      213: 4549257005321777459
+    second: alien-with-gun-walking_2
+  - first:
+      213: 7767301632256135144
+    second: alien-with-gun-walking_3
+  - first:
+      213: 6269731726312171568
+    second: alien-with-gun-walking_4
+  - first:
+      213: 7286609141972648665
+    second: alien-with-gun-walking_5
+  - first:
+      213: 194180314196987525
+    second: alien-with-gun-walking_6
+  - first:
+      213: 5044570296738818544
+    second: alien-with-gun-walking_7
+  - first:
+      213: 4946821710124460066
+    second: alien-with-gun-walking_8
+  - first:
+      213: -1484630507928867228
+    second: alien-with-gun-walking_9
+  - first:
+      213: -3629744734033011434
+    second: alien-with-gun-walking_10
+  - first:
+      213: -9014269239648464002
+    second: alien-with-gun-walking_11
+  - first:
+      213: -2444913971461984667
+    second: alien-with-gun-walking_12
+  - first:
+      213: -8248789663068828020
+    second: alien-with-gun-walking_13
+  - first:
+      213: -1922387784238749440
+    second: alien-with-gun-walking_14
+  - first:
+      213: 1253482944421027162
+    second: alien-with-gun-walking_15
+  - first:
+      213: 2777665492638752849
+    second: alien-with-gun-walking_16
+  - first:
+      213: -1509334606428183959
+    second: alien-with-gun-walking_17
+  - first:
+      213: -6628110920453052242
+    second: alien-with-gun-walking_18
+  - first:
+      213: -7380272740117790504
+    second: alien-with-gun-walking_19
+  - first:
+      213: -2346278998668626111
+    second: alien-with-gun-walking_20
+  - first:
+      213: 2193582591124081702
+    second: alien-with-gun-walking_21
+  - first:
+      213: 6481205954043391849
+    second: alien-with-gun-walking_22
+  - first:
+      213: 5519382438101512954
+    second: alien-with-gun-walking_23
+  - first:
+      213: 6835111956360523810
+    second: alien-with-gun-walking_24
+  - first:
+      213: 2523631920945645654
+    second: alien-with-gun-walking_25
+  - first:
+      213: 6549237091095802237
+    second: alien-with-gun-walking_26
+  - first:
+      213: -234129279060907631
+    second: alien-with-gun-walking_0
+  - first:
+      213: -7684893297438573252
+    second: alien-with-gun-walking_1
+  - first:
+      213: 3845228979456641322
+    second: alien-with-gun-walking_2
+  - first:
+      213: -328592022828998754
+    second: alien-with-gun-walking_3
+  - first:
+      213: 3387270464512644474
+    second: alien-with-gun-walking_5
+  - first:
+      213: -3856832597082562181
+    second: alien-with-gun-walking_6
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 150
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: alien-with-gun-walking_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1996e0249a430ccf0800000000000000
+      internalID: -234129279060907631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-walking_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3db4652346c95590800000000000000
+      internalID: -7684893297438573252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-walking_2
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a290d88426ffc5530800000000000000
+      internalID: 3845228979456641322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-walking_3
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9f1043db4b907bf0800000000000000
+      internalID: -328592022828998754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-walking_4
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03865df59cf820750800000000000000
+      internalID: 6269731726312171568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-walking_5
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a75d27b7a80020f20800000000000000
+      internalID: 3387270464512644474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien-with-gun-walking_6
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b712fb4ff27c97ac0800000000000000
+      internalID: -3856832597082562181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

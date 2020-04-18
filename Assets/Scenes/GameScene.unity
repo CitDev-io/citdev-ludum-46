@@ -1132,7 +1132,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5123089668401378522
 PrefabInstance:
@@ -1179,7 +1179,7 @@ PrefabInstance:
     - target: {fileID: 5123089668244567216, guid: e36ccd50922e8be46b1522bb8c639b84,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5123089668244567216, guid: e36ccd50922e8be46b1522bb8c639b84,
         type: 3}
@@ -1215,11 +1215,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5761960903528724985, guid: a2da6a629896fd64eb164982053a2150,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.45
+      objectReference: {fileID: 0}
     - target: {fileID: 5761960903528724986, guid: a2da6a629896fd64eb164982053a2150,
         type: 3}
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 5761960903528724988, guid: a2da6a629896fd64eb164982053a2150,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761960903528724988, guid: a2da6a629896fd64eb164982053a2150,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.3333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761960903528724988, guid: a2da6a629896fd64eb164982053a2150,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 3.3333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761960903528724988, guid: a2da6a629896fd64eb164982053a2150,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -300022967092176362, guid: 5df7b6d6d119a614d9266710eb1d8744,
+        type: 3}
+    - target: {fileID: 5761960903528724989, guid: a2da6a629896fd64eb164982053a2150,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 10a2a7d2487e30545b4822e45d873fbe, type: 2}
     - target: {fileID: 5761960903528724990, guid: a2da6a629896fd64eb164982053a2150,
         type: 3}
       propertyPath: m_LocalPosition.x
