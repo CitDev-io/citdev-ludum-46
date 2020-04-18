@@ -39,6 +39,8 @@ public class PlayerController : PhysicsObject {
     public float bulletSpeed = 100f;
     public float bulletRate = 200f;
 
+    private bool isFiring = false;
+
     void Awake () 
     {
         spriteRenderer = GetComponent<SpriteRenderer> ();    
@@ -97,6 +99,7 @@ public class PlayerController : PhysicsObject {
         var key = Random.Range(0,600);
         while(true) 
          { 
+             isFiring = true;
             GameObject bulletClone = Instantiate(bulletPrefab, bulletOrigin.position, Quaternion.identity);
             Rigidbody2D rb = bulletClone.GetComponent<Rigidbody2D>();
             rb.velocity = new Vector2((spriteRenderer.flipX ? -1f : 1f) * bulletSpeed, 0f);
@@ -127,12 +130,15 @@ public class PlayerController : PhysicsObject {
         if (Input.GetButtonDown("Fire1")) {
             if (firingSequence != null) {
                 StopCoroutine(firingSequence);
+                isFiring = false;
             }
             firingSequence = StartCoroutine(FireIfShooting());
+            isFiring = true;
         }
         if (Input.GetButtonUp("Fire1")) {
             if (firingSequence != null) {
                 StopCoroutine(firingSequence);
+                isFiring = false;
             }
         }
 
@@ -151,7 +157,8 @@ public class PlayerController : PhysicsObject {
 
         // animator.SetBool ("grounded", grounded);
         // animator.SetFloat ("velocityX", Mathf.Abs (velocity.x) / maxSpeed);
+        float recoil = isFiring ? maxSpeed / 2f : maxSpeed;
 
-        targetVelocity = move * maxSpeed;
+        targetVelocity = move * recoil;
     }
 }
