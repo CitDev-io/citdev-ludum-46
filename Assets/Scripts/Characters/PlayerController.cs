@@ -27,6 +27,10 @@ public class PlayerController : PhysicsObject {
     public Sprite withPlantNoAnimationSprite;
     [SerializeField]
     public Sprite withoutPlantNoAnimationSprite;
+
+    private float droppedX;
+    private float droppedY;
+
     void Awake () 
     {
         spriteRenderer = GetComponent<SpriteRenderer> ();    
@@ -46,12 +50,7 @@ public class PlayerController : PhysicsObject {
 
     void AttemptToDropPlant() {
         // TODO: Check if this is a good time/place?
-        if (grounded) {
-            DropPlant();
-            return;
-        }
-
-        OnDropPlantFailure?.Invoke();
+        DropPlant();
     }
 
     void AttemptToPickUpPlant() {
@@ -68,12 +67,23 @@ public class PlayerController : PhysicsObject {
         carryingPlant = false;
         OnDropPlantSuccess?.Invoke(transform.position);
         spriteRenderer.sprite = withoutPlantNoAnimationSprite;
+        droppedX = transform.position.x;
+        droppedY = transform.position.y;
+        Debug.Log("Dropping plant: " + droppedX + ", " + droppedY);
     }
 
     void PickUpPlant() {
-        carryingPlant = true;
-        OnPickupPlantSuccess?.Invoke();
-        spriteRenderer.sprite = withPlantNoAnimationSprite;
+        bool closeEnoughX = System.Math.Abs(transform.position.x - droppedX) < 1.5;
+        bool closeEnoughY = System.Math.Abs(transform.position.y - droppedY) < 1.5;
+        Debug.Log("Getting plant: " + closeEnoughX + ", " + closeEnoughY);
+
+        if (closeEnoughX && closeEnoughY) {
+            carryingPlant = true;
+            OnPickupPlantSuccess?.Invoke();
+            spriteRenderer.sprite = withPlantNoAnimationSprite;
+        } else {
+            OnPickupPlantFailure?.Invoke();
+        }
     }
 
     protected override void ComputeVelocity()
