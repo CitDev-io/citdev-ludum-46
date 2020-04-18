@@ -97,7 +97,7 @@ public class PlayerController : PhysicsObject {
         var key = Random.Range(0,600);
         while(true) 
          { 
-            GameObject bulletClone = Instantiate(bulletPrefab, bulletOrigin);
+            GameObject bulletClone = Instantiate(bulletPrefab, bulletOrigin.position, Quaternion.identity);
             Rigidbody2D rb = bulletClone.GetComponent<Rigidbody2D>();
             rb.velocity = new Vector2((spriteRenderer.flipX ? -1f : 1f) * bulletSpeed, 0f);
             yield return new WaitForSeconds(1f/bulletRate);
