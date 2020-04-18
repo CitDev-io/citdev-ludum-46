@@ -31,6 +31,8 @@ public class PlayerController : PhysicsObject {
     private float droppedX;
     private float droppedY;
 
+    public float minimumDistanceToGetPlant = 1.5;
+
     void Awake () 
     {
         spriteRenderer = GetComponent<SpriteRenderer> ();    
@@ -69,13 +71,11 @@ public class PlayerController : PhysicsObject {
         spriteRenderer.sprite = withoutPlantNoAnimationSprite;
         droppedX = transform.position.x;
         droppedY = transform.position.y;
-        Debug.Log("Dropping plant: " + droppedX + ", " + droppedY);
     }
 
     void PickUpPlant() {
-        bool closeEnoughX = System.Math.Abs(transform.position.x - droppedX) < 1.5;
-        bool closeEnoughY = System.Math.Abs(transform.position.y - droppedY) < 1.5;
-        Debug.Log("Getting plant: " + closeEnoughX + ", " + closeEnoughY);
+        bool closeEnoughX = System.Math.Abs(transform.position.x - droppedX) < minimumDistanceToGetPlant;
+        bool closeEnoughY = System.Math.Abs(transform.position.y - droppedY) < minimumDistanceToGetPlant;
 
         if (closeEnoughX && closeEnoughY) {
             carryingPlant = true;
