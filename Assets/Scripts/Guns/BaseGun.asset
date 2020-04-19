@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf31e1c59ca2ff145962f67b2c002c71, type: 3}
+  m_Name: BaseGun
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 8823477139030609899, guid: 5341e45ec2c185243aa65f8d86fbda47,
+    type: 3}
+  projectileSpeed: 25
+  projectileRate: 250
+  maxEnergy: 3500
+  fireCost: 12
+  rechargeCarryModeBonus: 6
+  rechargeRate: 4
+  lowEnergyCost: 6

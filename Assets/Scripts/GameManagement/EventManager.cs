@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public delegate void DoubleIntDelegate(int int1, int int2);
+public delegate void IntDelegate(int integer);
 public delegate void NoParamDelegate();
 public delegate void BoolDelegate(bool Bool);
 public delegate void GameObjectDelegate(GameObject gameObject);
@@ -11,6 +13,13 @@ public delegate void Vector3Delegate(Vector3 vector3);
 
 public class EventManager : Singleton<EventManager>
 {
+    public NoParamDelegate OnPlantDied;
+    public DoubleIntDelegate OnPlantHealthChange;
+    public DoubleIntDelegate OnPlayerGunChargeChange;
+    public NoParamDelegate OnPlayerStoppedShooting;
+    public NoParamDelegate OnPlayerStartedShooting;
+    public NoParamDelegate OnPlayerShotFailedNoEnergy;
+    public NoParamDelegate OnPlayerShotFailedNoGun;
     public NoParamDelegate OnPlayerLanded;
     public NoParamDelegate OnPlayerStartRunning;
     public NoParamDelegate OnPlayerStopRunning;
@@ -38,11 +47,23 @@ public class EventManager : Singleton<EventManager>
     void SubscribeToGameFeed() {
         GameSceneManager.Instance.OnPlantCreated += HandlePlantEnteredScene;
         GameSceneManager.Instance.OnPlantDestroyed += HandlePlantLeftScene;
+        GameSceneManager.Instance.OnPlantHealthChange += HandlePlantHealthChange;
+        GameSceneManager.Instance.OnPlantDied += HandlePlantDied;
     }
 
     void UnsubscribeToGameFeed() {
         GameSceneManager.Instance.OnPlantCreated -= HandlePlantEnteredScene;
         GameSceneManager.Instance.OnPlantDestroyed -= HandlePlantLeftScene;
+        GameSceneManager.Instance.OnPlantHealthChange -= HandlePlantHealthChange;
+        GameSceneManager.Instance.OnPlantDied -= HandlePlantDied;
+    }
+
+    void HandlePlantHealthChange(int current, int max) {
+        OnPlantHealthChange?.Invoke(current, max);
+    }
+
+    void HandlePlantDied() {
+        OnPlantDied?.Invoke();
     }
 
     public void SubscribeToPlayerFeed(PlayerController pc) {
@@ -59,6 +80,11 @@ public class EventManager : Singleton<EventManager>
         pc.OnStartRunning += HandlePlayerStartRunning;
         pc.OnStopRunning += HandlePlayerStopRunning;
         pc.OnLanding += HandlePlayerLanding;
+        pc.OnShootEnd += HandlePlayerStoppedShooting;
+        pc.OnShootFailedNoEnergy += HandlePlayerFailedShotNoEnergy;
+        pc.OnShootFailedNoGun += HandlePlayerFailedShotNoGun;
+        pc.OnShootStart += HandlePlayerStartedShooting;
+        pc.OnGunChargeChange += HandlePlayerGunChargeChange;
     }
 
     void UnsubscribeFromPlayerFeed(PlayerController pc) {
@@ -72,6 +98,31 @@ public class EventManager : Singleton<EventManager>
         pc.OnStartRunning -= HandlePlayerStartRunning;
         pc.OnStopRunning -= HandlePlayerStopRunning;
         pc.OnLanding -= HandlePlayerLanding;
+        pc.OnShootEnd -= HandlePlayerStoppedShooting;
+        pc.OnShootFailedNoEnergy -= HandlePlayerFailedShotNoEnergy;
+        pc.OnShootFailedNoGun -= HandlePlayerFailedShotNoGun;
+        pc.OnShootStart -= HandlePlayerStartedShooting;
+        pc.OnGunChargeChange -= HandlePlayerGunChargeChange;
+    }
+
+    private void HandlePlayerGunChargeChange(int charge, int max) {
+        OnPlayerGunChargeChange?.Invoke(charge, max);
+    }
+
+    private void HandlePlayerStoppedShooting() {
+        OnPlayerStartedShooting?.Invoke();
+    }
+
+    private void HandlePlayerFailedShotNoEnergy() {
+        OnPlayerShotFailedNoEnergy?.Invoke();
+    }
+
+    private void HandlePlayerFailedShotNoGun() {
+        OnPlayerShotFailedNoGun?.Invoke();
+    }
+
+    private void HandlePlayerStartedShooting() {
+        OnPlayerStartedShooting?.Invoke();
     }
 
     private void HandlePlayerLanding() {

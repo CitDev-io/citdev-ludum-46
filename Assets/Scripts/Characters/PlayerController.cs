@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : PhysicsObject {
+    public DoubleIntDelegate OnGunChargeChange;
     public NoParamDelegate OnStartRunning;
     public NoParamDelegate OnStopRunning;
     public NoParamDelegate OnJumpSuccessful;
     public NoParamDelegate OnJumpFailed;
     public NoParamDelegate OnLanding;
-    // public BoolDelegate OnShootSuccess;
-    // public NoParamDelegate OnShootFailure;
+    public NoParamDelegate OnShootStart;
+    public NoParamDelegate OnShootEnd;
+    public NoParamDelegate OnShootSuccess;
+    public NoParamDelegate OnShootFailedNoEnergy;
+    public NoParamDelegate OnShootFailedNoGun;
     public Vector3Delegate OnDropPlantSuccess;
     public NoParamDelegate OnDropPlantFailure;
     public NoParamDelegate OnPickupPlantSuccess;
@@ -32,28 +36,49 @@ public class PlayerController : PhysicsObject {
     private float droppedX;
     private float droppedY;
     [SerializeField]
-    private GameObject bulletPrefab;
-    [SerializeField]
     private Transform bulletOrigin;
     public float minimumDistanceToGetPlant = 1.5f;
-    public float bulletSpeed = 100f;
-    public float bulletRate = 200f;
 
     private bool isFiring = false;
     private Vector2 lastPosition = Vector2.zero;
     private bool lastWalkingStatus = false;
     private bool lastGrounded = true;
 
+    private int gun_energy; // = 0;
+    private bool isPaused = false;
+    [SerializeField]
+    public GunConfiguration gun;
+
     [SerializeField]
     public RuntimeAnimatorController WithGunController;
     [SerializeField]
     public RuntimeAnimatorController WithPlantController;
     
+    void Start() {
+        base.Start();
+        EventManager.Instance.OnPlantDied += HandlePlantDied;
+    }
+
+    void OnDestroy() {
+        EventManager.Instance.OnPlantDied -= HandlePlantDied;
+    }
+
+    void HandlePlantDied() {
+        DropPlant();
+        isPaused = true;
+    }
+
     private void StopFiring() {
         if (firingSequence != null) {
             StopCoroutine(firingSequence);
             isFiring = false;
+            OnShootEnd?.Invoke();
         }
+    }
+
+    private void adjustGunEnergy(int adjustment) {
+        gun_energy = Mathf.Clamp(gun_energy + adjustment, 0, gun.maxEnergy);
+        OnGunChargeChange?.Invoke(gun_energy, gun.maxEnergy);
     }
 
     void Awake () 
@@ -61,8 +86,14 @@ public class PlayerController : PhysicsObject {
         spriteRenderer = GetComponent<SpriteRenderer> ();    
         animator = GetComponent<Animator> ();
         lastPosition = GetComponent<Transform>().position;
-
+        adjustGunEnergy(gun.maxEnergy);
         animator.runtimeAnimatorController = WithPlantController;
+    }
+
+    void FixedUpdate() {
+        base.FixedUpdate();
+        int bonus = carryingPlant ? gun.rechargeCarryModeBonus : 0;
+        adjustGunEnergy(gun.rechargeRate + bonus);
     }
 
     void Update() {
@@ -111,19 +142,28 @@ public class PlayerController : PhysicsObject {
 
     IEnumerator FireIfShooting()
     {
+        OnShootStart.Invoke();
         var key = Random.Range(0,600);
         while(true) 
          { 
-             isFiring = true;
-            GameObject bulletClone = Instantiate(bulletPrefab, bulletOrigin.position, Quaternion.identity);
-            Rigidbody2D rb = bulletClone.GetComponent<Rigidbody2D>();
-            rb.velocity = new Vector2((spriteRenderer.flipX ? -1f : 1f) * bulletSpeed, 0f);
-            yield return new WaitForSeconds(1f/bulletRate);
+            int shotCost = gun.fireCost + (gun_energy/gun.maxEnergy < 0.25 ? gun.lowEnergyCost : 0);
+            if (gun_energy >= shotCost) {
+                OnShootSuccess?.Invoke();
+                isFiring = true;
+                adjustGunEnergy(-shotCost);
+                GameObject bulletClone = Instantiate(gun.projectilePrefab, bulletOrigin.position, Quaternion.identity);
+                Rigidbody2D rb = bulletClone.GetComponent<Rigidbody2D>();
+                rb.velocity = new Vector2((spriteRenderer.flipX ? -1f : 1f) * gun.projectileSpeed, 0f);
+            } else {
+                OnShootFailedNoEnergy?.Invoke();
+            }
+            yield return new WaitForSeconds(1f/gun.projectileRate);
          }
      }
 
     protected override void ComputeVelocity()
     {
+        if (isPaused) return;
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis ("Horizontal");
@@ -142,7 +182,10 @@ public class PlayerController : PhysicsObject {
 
 
         if (Input.GetButtonDown("Fire1")) {
-            if (carryingPlant) return;
+            if (carryingPlant) {
+                OnShootFailedNoGun?.Invoke();
+                return;
+            }
             StopFiring();
             firingSequence = StartCoroutine(FireIfShooting());
             isFiring = true;
