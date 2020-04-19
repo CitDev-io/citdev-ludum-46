@@ -11,6 +11,9 @@ public delegate void Vector3Delegate(Vector3 vector3);
 
 public class EventManager : Singleton<EventManager>
 {
+    public NoParamDelegate OnPlayerLanded;
+    public NoParamDelegate OnPlayerStartRunning;
+    public NoParamDelegate OnPlayerStopRunning;
     public NoParamDelegate OnPlayerJumpSuccessful;
     public NoParamDelegate OnPlayerJumpFailed;
     public Vector3Delegate OnPlayerDropPlantSuccess;
@@ -53,6 +56,9 @@ public class EventManager : Singleton<EventManager>
         pc.OnJumpSuccessful += HandlePlayerJumpSuccessful;
         pc.OnPickupPlantFailure += HandlePlayerFailedToPickUpPlant;
         pc.OnPickupPlantSuccess += HandlePlayerPickedUpPlant;
+        pc.OnStartRunning += HandlePlayerStartRunning;
+        pc.OnStopRunning += HandlePlayerStopRunning;
+        pc.OnLanding += HandlePlayerLanding;
     }
 
     void UnsubscribeFromPlayerFeed(PlayerController pc) {
@@ -63,6 +69,21 @@ public class EventManager : Singleton<EventManager>
         pc.OnJumpSuccessful -= HandlePlayerJumpSuccessful;
         pc.OnPickupPlantFailure -= HandlePlayerFailedToPickUpPlant;
         pc.OnPickupPlantSuccess -= HandlePlayerPickedUpPlant;
+        pc.OnStartRunning -= HandlePlayerStartRunning;
+        pc.OnStopRunning -= HandlePlayerStopRunning;
+        pc.OnLanding -= HandlePlayerLanding;
+    }
+
+    private void HandlePlayerLanding() {
+        OnPlayerLanded?.Invoke();
+    }
+
+    private void HandlePlayerStartRunning() {
+        OnPlayerStartRunning?.Invoke();
+    }
+
+    private void HandlePlayerStopRunning() {
+        OnPlayerStopRunning?.Invoke();
     }
 
     private void HandlePlayerJumpSuccessful() {

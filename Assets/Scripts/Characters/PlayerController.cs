@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : PhysicsObject {
-    // public NoParamDelegate OnStartRunning;
-    // public NoParamDelegate OnStopRunning;
+    public NoParamDelegate OnStartRunning;
+    public NoParamDelegate OnStopRunning;
     public NoParamDelegate OnJumpSuccessful;
     public NoParamDelegate OnJumpFailed;
-    // public NoParamDelegate OnLanding;
+    public NoParamDelegate OnLanding;
     // public BoolDelegate OnShootSuccess;
     // public NoParamDelegate OnShootFailure;
     public Vector3Delegate OnDropPlantSuccess;
@@ -41,6 +41,8 @@ public class PlayerController : PhysicsObject {
 
     private bool isFiring = false;
     private Vector2 lastPosition = Vector2.zero;
+    private bool lastWalkingStatus = false;
+    private bool lastGrounded = true;
 
     [SerializeField]
     public RuntimeAnimatorController WithGunController;
@@ -177,11 +179,23 @@ public class PlayerController : PhysicsObject {
         }
         
         
+        if (lastWalkingStatus != isWalking) {
+            if (isWalking) {
+                OnStartRunning?.Invoke();
+            } else {
+                OnStopRunning?.Invoke();
+            }
+        }
 
+        if (grounded && !lastGrounded) {
+            OnLanding?.Invoke();
+        }
 
         float recoil = isFiring ? maxSpeed / 2f : maxSpeed;
 
         targetVelocity = move * recoil;
+        lastGrounded = grounded;
         lastPosition = transform.position;
+        lastWalkingStatus = isWalking;
     }
 }

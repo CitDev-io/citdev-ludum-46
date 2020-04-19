@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Cinemachine;
 
 
 public class GameSceneManager : Singleton<GameSceneManager>
@@ -13,6 +14,10 @@ public class GameSceneManager : Singleton<GameSceneManager>
     private GameObject plantInstance;
     [SerializeField]
     public GameObject plantPrefab;
+    [SerializeField]
+    public CinemachineVirtualCamera camera;
+    private Transform previousTarget;
+
     void Start() {
         SubscribeToEvents();
     }
@@ -35,7 +40,8 @@ public class GameSceneManager : Singleton<GameSceneManager>
         var newPlant = Instantiate(plantPrefab, position, Quaternion.identity);
         plantInstance = newPlant;
         OnPlantCreated?.Invoke(newPlant);
-        // TODO: Do we destroy the current instance/check for it to not dup?
+        previousTarget = camera.Follow;
+        camera.Follow = plantInstance.transform;
     }
 
     private void HandlePlayerPickedUpPlant() {
@@ -43,5 +49,6 @@ public class GameSceneManager : Singleton<GameSceneManager>
 
         Destroy(plantInstance);
         OnPlantDestroyed?.Invoke();
+        camera.Follow = previousTarget;
     }
 }

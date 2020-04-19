@@ -17,7 +17,7 @@ public class GenerateGround : MonoBehaviour
 
     IEnumerator groundBuild()
     {
-        float xPos = 16f;
+        float xPos = 17f;
         while(true) 
          { 
             xPos += 1.25f;

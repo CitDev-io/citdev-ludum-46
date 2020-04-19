@@ -98,3 +98,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantPrefab: {fileID: 6000937539018643117, guid: 52dfd0a35a0d08a4d9a7f6872ba2c3c5,
     type: 3}
+  camera: {fileID: 0}
