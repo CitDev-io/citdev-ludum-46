@@ -1,22 +1,28 @@
 fileFormatVersion: 2
-guid: 650a003630d6ce6488852ead2dbe7a5c
+guid: 061a1e3f584d1e1459c9935e490646d7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5184886964795912328
-    second: plant-planted-idle_0
+      213: 6204321219028974678
+    second: alient-with-plant-walking'_0
   - first:
-      213: 602950435813537950
-    second: plant-planted-idle_1
+      213: 7308252604237125431
+    second: alient-with-plant-walking'_1
   - first:
-      213: -7327502160640186202
-    second: plant-planted-idle_2
+      213: 3348398213859766182
+    second: alient-with-plant-walking'_2
   - first:
-      213: 2908962555710817739
-    second: plant-planted-idle_3
+      213: 1009729918122526876
+    second: alient-with-plant-walking'_3
   - first:
-      213: -5513552437005995219
-    second: plant-planted-idle_4
+      213: 687663059034020586
+    second: alient-with-plant-walking'_4
+  - first:
+      213: -4619073847204481993
+    second: alient-with-plant-walking'_5
+  - first:
+      213: -3083936042814901463
+    second: alient-with-plant-walking'_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,13 +120,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: plant-planted-idle_0
+      name: alient-with-plant-walking'_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 400
-        height: 400
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 880b639493b64f740800000000000000
-      internalID: 5184886964795912328
+      spriteID: 65cf3acd64d2a1650800000000000000
+      internalID: 6204321219028974678
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: plant-planted-idle_1
+      name: alient-with-plant-walking'_1
       rect:
         serializedVersion: 2
-        x: 400
+        x: 500
         y: 0
-        width: 400
-        height: 400
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9835df0a3c1e5800800000000000000
-      internalID: 602950435813537950
+      spriteID: 7379064d5012c6560800000000000000
+      internalID: 7308252604237125431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: plant-planted-idle_2
+      name: alient-with-plant-walking'_2
       rect:
         serializedVersion: 2
-        x: 800
+        x: 1000
         y: 0
-        width: 400
-        height: 400
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a862209b9b7f4a90800000000000000
-      internalID: -7327502160640186202
+      spriteID: 6afe9a75f66e77e20800000000000000
+      internalID: 3348398213859766182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: plant-planted-idle_3
+      name: alient-with-plant-walking'_3
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 1500
         y: 0
-        width: 400
-        height: 400
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc54e063806be5820800000000000000
-      internalID: 2908962555710817739
+      spriteID: c9807c0c208430e00800000000000000
+      internalID: 1009729918122526876
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: plant-planted-idle_4
+      name: alient-with-plant-walking'_4
       rect:
         serializedVersion: 2
-        x: 1600
+        x: 2000
         y: 0
-        width: 400
-        height: 400
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,8 +218,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d23b4c5454deb73b0800000000000000
-      internalID: -5513552437005995219
+      spriteID: aea91e6a8e11b8900800000000000000
+      internalID: 687663059034020586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alient-with-plant-walking'_5
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73474121fc0c5efb0800000000000000
+      internalID: -4619073847204481993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alient-with-plant-walking'_6
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9237ef92288a335d0800000000000000
+      internalID: -3083936042814901463
       vertices: []
       indices: 
       edges: []

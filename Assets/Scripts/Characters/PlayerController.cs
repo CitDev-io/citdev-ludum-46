@@ -40,11 +40,27 @@ public class PlayerController : PhysicsObject {
     public float bulletRate = 200f;
 
     private bool isFiring = false;
+    private Vector2 lastPosition = Vector2.zero;
+
+    [SerializeField]
+    public RuntimeAnimatorController WithGunController;
+    [SerializeField]
+    public RuntimeAnimatorController WithPlantController;
+    
+    private void StopFiring() {
+        if (firingSequence != null) {
+            StopCoroutine(firingSequence);
+            isFiring = false;
+        }
+    }
 
     void Awake () 
     {
         spriteRenderer = GetComponent<SpriteRenderer> ();    
         animator = GetComponent<Animator> ();
+        lastPosition = GetComponent<Transform>().position;
+
+        animator.runtimeAnimatorController = WithPlantController;
     }
 
     void Update() {
@@ -64,13 +80,14 @@ public class PlayerController : PhysicsObject {
     }
 
     void AttemptToPickUpPlant() {
-        // TODO: Be in range?
-        // if (grounded) {
-        PickUpPlant();
-        //     return;
-        // }
+        bool closeEnoughX = Mathf.Abs(transform.position.x - droppedX) < minimumDistanceToGetPlant;
+        bool closeEnoughY = grounded || transform.position.y < minimumDistanceToGetPlant;
 
-        //OnPickupPlantFailure?.Invoke();
+        if (closeEnoughX && closeEnoughY) {
+            PickUpPlant();
+        } else {
+            OnPickupPlantFailure?.Invoke();
+        }
     }
 
     void DropPlant() {
@@ -79,19 +96,15 @@ public class PlayerController : PhysicsObject {
         spriteRenderer.sprite = withoutPlantNoAnimationSprite;
         droppedX = transform.position.x;
         droppedY = transform.position.y;
+        animator.runtimeAnimatorController = WithGunController;
     }
 
     void PickUpPlant() {
-        bool closeEnoughX = Mathf.Abs(transform.position.x - droppedX) < minimumDistanceToGetPlant;
-        bool closeEnoughY = grounded || transform.position.y < minimumDistanceToGetPlant;
-
-        if (closeEnoughX && closeEnoughY) {
-            carryingPlant = true;
-            OnPickupPlantSuccess?.Invoke();
-            spriteRenderer.sprite = withPlantNoAnimationSprite;
-        } else {
-            OnPickupPlantFailure?.Invoke();
-        }
+        carryingPlant = true;
+        OnPickupPlantSuccess?.Invoke();
+        spriteRenderer.sprite = withPlantNoAnimationSprite;
+        animator.runtimeAnimatorController = WithPlantController;
+        StopFiring();
     }
 
     IEnumerator FireIfShooting()
@@ -115,34 +128,26 @@ public class PlayerController : PhysicsObject {
 
         if (Input.GetButtonDown ("Jump")) {
             if (grounded) {
-                velocity.y = jumpTakeOffSpeed;
-                OnJumpSuccessful?.Invoke();
-            } else {
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpTakeOffSpeed));
                 OnJumpSuccessful?.Invoke();
             }
         } else if (Input.GetButtonUp ("Jump")) 
         {
-            if (velocity.y > 0) {
-                velocity.y = velocity.y * 0.5f;
+            if (!grounded) {
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -0.25f * jumpTakeOffSpeed));
             }
         }
 
+
         if (Input.GetButtonDown("Fire1")) {
-            if (firingSequence != null) {
-                StopCoroutine(firingSequence);
-                isFiring = false;
-            }
+            if (carryingPlant) return;
+            StopFiring();
             firingSequence = StartCoroutine(FireIfShooting());
             isFiring = true;
         }
         if (Input.GetButtonUp("Fire1")) {
-            if (firingSequence != null) {
-                StopCoroutine(firingSequence);
-                isFiring = false;
-            }
+            StopFiring();
         }
-
-        animator.SetBool("IsWalking", Mathf.Abs(move.x) > 0f);
 
         if (Mathf.Abs(move.x) > 0.025f) {
             bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
@@ -153,12 +158,30 @@ public class PlayerController : PhysicsObject {
                 bulletOrigin.transform.localPosition = new Vector3(Mathf.Abs(bulletOrigin.transform.localPosition.x) * (spriteRenderer.flipX ? -1 : 1), bulletOrigin.transform.localPosition.y, bulletOrigin.transform.localPosition.z);
             }
         }
+
+        bool isWalking = Mathf.Abs(move.x) > 0f;
+        animator.SetBool("IsWalking", isWalking);
+
+        if (!grounded) {
+            float positionY = transform.position.y;
+            // TODO: second part of IF is hacky way to stop ground bounce from being read as !grounded + falling
+            // only really fixes if the map stays flat
+            if (lastPosition.y != positionY && positionY > - 0.80f) {
+                bool isJumping = positionY > lastPosition.y;
+                animator.SetBool("IsFalling", !isJumping);
+                animator.SetBool("IsJumping", isJumping);
+            }
+        } else {
+            animator.SetBool("IsFalling", false);
+            animator.SetBool("IsJumping", false);
+        }
+        
         
 
-        // animator.SetBool ("grounded", grounded);
-        // animator.SetFloat ("velocityX", Mathf.Abs (velocity.x) / maxSpeed);
+
         float recoil = isFiring ? maxSpeed / 2f : maxSpeed;
 
         targetVelocity = move * recoil;
+        lastPosition = transform.position;
     }
 }
