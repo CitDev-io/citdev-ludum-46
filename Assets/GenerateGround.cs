@@ -18,12 +18,12 @@ public class GenerateGround : MonoBehaviour
     IEnumerator groundBuild()
     {
         float xPos = 17f;
-        while(true) 
+        while(xPos < 1000f) 
          { 
             xPos += 1.25f;
             Vector3Int currentCell = theMap.WorldToCell(new Vector3(0 + xPos, -3.2f, 0f));
             theMap.SetTile(currentCell, layableTiles[Random.Range(0, layableTiles.Count)]);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.01f);
          }
      }
 }

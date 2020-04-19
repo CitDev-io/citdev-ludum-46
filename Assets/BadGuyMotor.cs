@@ -20,7 +20,9 @@ public class BadGuyMotor : MonoBehaviour
     public void Die() {
         animator.SetBool("IsDead", true);
         movementSpeed = 0f;
+        isDead = true;
         gameObject.layer = LayerMask.NameToLayer("TheDead");
+        EventManager.Instance.ReportBadGuyDied(transform.position);
     }
 
     void FixedUpdate() {

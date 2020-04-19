@@ -13,6 +13,7 @@ public class ProjectileDestructible : MonoBehaviour
 
     public void TakeDamage(int damage) {
         hitPoints -= damage;
+        EventManager.Instance.ReportBadGuyTookDamage();
 
         if (hitPoints <= 0) {
             HandleDeath();

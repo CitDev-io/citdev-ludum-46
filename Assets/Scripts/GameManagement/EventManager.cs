@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public delegate void Vector2Delegate(Vector2 v2);
 public delegate void DoubleIntDelegate(int int1, int int2);
 public delegate void IntDelegate(int integer);
 public delegate void NoParamDelegate();
@@ -13,6 +14,8 @@ public delegate void Vector3Delegate(Vector3 vector3);
 
 public class EventManager : Singleton<EventManager>
 {
+    public Vector2Delegate OnBadGuyDied;
+    public NoParamDelegate OnBadGuyTookDamage;
     public NoParamDelegate OnPlantDied;
     public DoubleIntDelegate OnPlantHealthChange;
     public DoubleIntDelegate OnPlayerGunChargeChange;
@@ -171,5 +174,13 @@ public class EventManager : Singleton<EventManager>
 
     private void HandlePlantLeftScene() {
         OnPlantHasLeftScene?.Invoke();
+    }
+
+    public void ReportBadGuyDied(Vector2 location) {
+        OnBadGuyDied?.Invoke(location);
+    }
+
+    public void ReportBadGuyTookDamage() {
+        OnBadGuyTookDamage?.Invoke();
     }
 }
