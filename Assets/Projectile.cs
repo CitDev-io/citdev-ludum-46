@@ -12,8 +12,6 @@ public class Projectile : MonoBehaviour
         ProjectileDestructible pd = col.collider.gameObject.GetComponent<ProjectileDestructible>();
         if (pd != null) {
             pd.TakeDamage(damage);
-        } else {
-            Debug.Log("NO PD" + col.collider.gameObject.name);
         }
     }
 

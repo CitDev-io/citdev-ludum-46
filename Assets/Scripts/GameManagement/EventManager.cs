@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public delegate void LongDelegate(long lg);
 public delegate void Vector2Delegate(Vector2 v2);
 public delegate void DoubleIntDelegate(int int1, int int2);
 public delegate void IntDelegate(int integer);
@@ -11,9 +12,13 @@ public delegate void NoParamDelegate();
 public delegate void BoolDelegate(bool Bool);
 public delegate void GameObjectDelegate(GameObject gameObject);
 public delegate void Vector3Delegate(Vector3 vector3);
+public delegate void FloatDelegate(float flt);
 
 public class EventManager : Singleton<EventManager>
 {
+    public NoParamDelegate OnGameUnpaused;
+    public NoParamDelegate OnGamePaused;
+    public LongDelegate OnPlayerScoreChanged;
     public Vector2Delegate OnBadGuyDied;
     public NoParamDelegate OnBadGuyTookDamage;
     public NoParamDelegate OnBadGuyDealtDamage;
@@ -40,6 +45,7 @@ public class EventManager : Singleton<EventManager>
 
     [SerializeField]
     public PlayerController currentCharacter;
+    bool GAME_PAUSED = false;
 
     void Awake() {
         if (currentCharacter != null) {
@@ -48,11 +54,26 @@ public class EventManager : Singleton<EventManager>
         SubscribeToGameFeed();
     }
 
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            GAME_PAUSED = !GAME_PAUSED;
+
+            if (GAME_PAUSED) {
+                OnGamePaused?.Invoke();
+                Time.timeScale = 0.0f;
+            } else {
+                OnGameUnpaused?.Invoke();
+                Time.timeScale = 1.0f;
+            }
+        }
+    }
+
     void SubscribeToGameFeed() {
         GameSceneManager.Instance.OnPlantCreated += HandlePlantEnteredScene;
         GameSceneManager.Instance.OnPlantDestroyed += HandlePlantLeftScene;
         GameSceneManager.Instance.OnPlantHealthChange += HandlePlantHealthChange;
         GameSceneManager.Instance.OnPlantDied += HandlePlantDied;
+        GameSceneManager.Instance.OnScoreChange += HandleScoreChange;
     }
 
     void UnsubscribeToGameFeed() {
@@ -60,6 +81,11 @@ public class EventManager : Singleton<EventManager>
         GameSceneManager.Instance.OnPlantDestroyed -= HandlePlantLeftScene;
         GameSceneManager.Instance.OnPlantHealthChange -= HandlePlantHealthChange;
         GameSceneManager.Instance.OnPlantDied -= HandlePlantDied;
+        GameSceneManager.Instance.OnScoreChange -= HandleScoreChange;
+    }
+
+    void HandleScoreChange(long score) {
+        OnPlayerScoreChanged?.Invoke(score);
     }
 
     void HandlePlantHealthChange(int current, int max) {

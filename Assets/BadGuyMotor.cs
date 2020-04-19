@@ -12,12 +12,14 @@ public class BadGuyMotor : MonoBehaviour
     public float movementSpeed = 10f;
     public int damageToPlant = 10;
     private bool isChasing = true;
+    private bool entering = true;
 
     void Start() {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         mgr = GameSceneManager.Instance;
+        animator.SetBool("IsEntering", true);
     }
 
     public void Die() {
@@ -29,7 +31,7 @@ public class BadGuyMotor : MonoBehaviour
     }
 
     void FixedUpdate() {
-        if (isChasing) {
+        if (isChasing && !entering) {
             float targetX = mgr.GetTarget().position.x;
             bool goLeft = targetX < transform.position.x;
             spriteRenderer.flipX = !goLeft;
@@ -43,7 +45,7 @@ public class BadGuyMotor : MonoBehaviour
         isChasing = false;
         movementSpeed = 0f;
         rigidbody.velocity = Vector2.zero;
-        animator.SetBool("IsLeaving", true);
+        animator.SetBool("IsDead", true);
 
     }
 
@@ -53,5 +55,10 @@ public class BadGuyMotor : MonoBehaviour
             GameSceneManager.Instance.ReportBadGuyDamagedPlant(damageToPlant);
             EventManager.Instance.ReportBadGuyDealtDamage();
         }
+    }
+    public void AnimationComplete() {
+        Debug.Log("RAN");
+        animator.SetBool("IsEntering", false);
+        entering = false;
     }
 }

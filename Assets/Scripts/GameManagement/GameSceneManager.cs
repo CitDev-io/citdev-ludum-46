@@ -8,6 +8,7 @@ using Cinemachine;
 
 public class GameSceneManager : Singleton<GameSceneManager>
 {
+    public LongDelegate OnScoreChange;
     public DoubleIntDelegate OnPlantHealthChange;
     public NoParamDelegate OnPlantDied;
     public GameObjectDelegate OnPlantCreated;
@@ -27,7 +28,9 @@ public class GameSceneManager : Singleton<GameSceneManager>
     private int plant_plantedGainAmount = 12;
     private bool plant_isAlive = true;
     private Coroutine plantHealthLoop;
-    
+    private float maxDistance = 0f;
+    public long distancePointBonus = 283;
+    private long nonDistanceScorePool = 0;
 
     public Transform GetTarget() {
         if (plantInstance != null) {
@@ -51,15 +54,38 @@ public class GameSceneManager : Singleton<GameSceneManager>
         UnsubscribeFromEvents();
     }
 
+    void Update() {
+        if (player.transform.position.x > maxDistance) {
+            maxDistance = player.transform.position.x;
+            UpdateScore();
+        }
+    }
+
+    void UpdateScore() {
+        long score = (long) nonDistanceScorePool + Convert.ToInt64(distancePointBonus * maxDistance);
+        OnScoreChange?.Invoke(score);
+    }
  
     private void SubscribeToEvents() {
         EventManager.Instance.OnPlayerPickupPlantSuccess += HandlePlayerPickedUpPlant;
         EventManager.Instance.OnPlayerDropPlantSuccess += HandlePlayerDroppedPlant;
+        EventManager.Instance.OnGamePaused += Pause;
+        EventManager.Instance.OnGameUnpaused += Unpause;
+    }
+
+    void Pause() {
+        
+    }
+
+    void Unpause() {
+        
     }
 
     private void UnsubscribeFromEvents() {
         EventManager.Instance.OnPlayerPickupPlantSuccess -= HandlePlayerPickedUpPlant;
         EventManager.Instance.OnPlayerDropPlantSuccess -= HandlePlayerDroppedPlant;
+        EventManager.Instance.OnGamePaused -= Pause;
+        EventManager.Instance.OnGameUnpaused -= Unpause;
     }
 
     private void HandlePlayerDroppedPlant(Vector3 position) {

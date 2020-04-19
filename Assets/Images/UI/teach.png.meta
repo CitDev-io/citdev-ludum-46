@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: 27e510882208f4a4facc075c80e073c4
+guid: e75f1f2f627078b41849e97f6b3324bb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -194818066077126744
-    second: flowers_0
+      213: 5013919423951066099
+    second: teach_0
   - first:
-      213: 7702638131693110658
-    second: flowers_1
+      213: 4447722895801909731
+    second: teach_1
   - first:
-      213: 1688127093310603583
-    second: flowers_2
+      213: 5134890997606439689
+    second: teach_2
   - first:
-      213: 7958929529641746168
-    second: flowers_3
+      213: 3819746242068332564
+    second: teach_3
+  - first:
+      213: -7365331329440336139
+    second: teach_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -43,12 +46,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -57,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 665
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -73,10 +76,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -85,10 +88,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,10 +100,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -111,13 +114,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flowers_0
+      name: teach_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1000
-        width: 1000
-        height: 1000
+        x: 1843
+        y: 2039
+        width: 1488
+        height: 1180
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,41 +128,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8afe4a7400edb4df0800000000000000
-      internalID: -194818066077126744
+      spriteID: 3f3d805b625059540800000000000000
+      internalID: 5013919423951066099
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flowers_1
+      name: teach_1
       rect:
         serializedVersion: 2
-        x: 1000
-        y: 1000
-        width: 1000
-        height: 1000
+        x: 262
+        y: 2818
+        width: 296
+        height: 407
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 296, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28542f8029445ea60800000000000000
-      internalID: 7702638131693110658
+      spriteID: 3e105af986c79bd30800000000000000
+      internalID: 4447722895801909731
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flowers_2
+      name: teach_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1000
-        height: 974
+        x: 278
+        y: 2209
+        width: 1426
+        height: 486
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +170,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f31cd74b5ae6d6710800000000000000
-      internalID: 1688127093310603583
+      spriteID: 90bdea0182cc24740800000000000000
+      internalID: 5134890997606439689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flowers_3
+      name: teach_3
       rect:
         serializedVersion: 2
-        x: 1000
-        y: 0
-        width: 1000
-        height: 1000
+        x: 285
+        y: 1584
+        width: 471
+        height: 532
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,8 +191,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8feb9ae2d3cc37e60800000000000000
-      internalID: 7958929529641746168
+      spriteID: 410cd9228f6720530800000000000000
+      internalID: 3819746242068332564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: teach_4
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1001
+        width: 364
+        height: 460
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f637a7dd2619c990800000000000000
+      internalID: -7365331329440336139
       vertices: []
       indices: 
       edges: []
