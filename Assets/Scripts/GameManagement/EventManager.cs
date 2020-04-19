@@ -16,6 +16,7 @@ public class EventManager : Singleton<EventManager>
 {
     public Vector2Delegate OnBadGuyDied;
     public NoParamDelegate OnBadGuyTookDamage;
+    public NoParamDelegate OnBadGuyDealtDamage;
     public NoParamDelegate OnPlantDied;
     public DoubleIntDelegate OnPlantHealthChange;
     public DoubleIntDelegate OnPlayerGunChargeChange;
@@ -182,5 +183,9 @@ public class EventManager : Singleton<EventManager>
 
     public void ReportBadGuyTookDamage() {
         OnBadGuyTookDamage?.Invoke();
+    }
+
+    public void ReportBadGuyDealtDamage() {
+        OnBadGuyDealtDamage?.Invoke();
     }
 }

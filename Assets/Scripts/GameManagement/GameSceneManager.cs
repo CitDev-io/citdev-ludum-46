@@ -27,6 +27,7 @@ public class GameSceneManager : Singleton<GameSceneManager>
     private int plant_plantedGainAmount = 12;
     private bool plant_isAlive = true;
     private Coroutine plantHealthLoop;
+    
 
     public Transform GetTarget() {
         if (plantInstance != null) {
@@ -115,5 +116,9 @@ public class GameSceneManager : Singleton<GameSceneManager>
          if (plantInstance != null) {
              plantInstance.GetComponent<Animator>().SetBool("IsDead", true);
          }
+     }
+
+     public void ReportBadGuyDamagedPlant(int damage) {
+         AdjustPlantHealth(-damage);
      }
 }
