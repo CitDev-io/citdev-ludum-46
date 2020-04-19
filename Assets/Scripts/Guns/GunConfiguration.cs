@@ -13,4 +13,5 @@ public class GunConfiguration : ScriptableObject
     public int rechargeCarryModeBonus;
     public int rechargeRate;
     public int lowEnergyCost;
+    public int damage;
 }

@@ -12,13 +12,13 @@ public class GameSceneManager : Singleton<GameSceneManager>
     public NoParamDelegate OnPlantDied;
     public GameObjectDelegate OnPlantCreated;
     public NoParamDelegate OnPlantDestroyed;
-
+    [SerializeField]
+    public GameObject player;
     private GameObject plantInstance;
     [SerializeField]
     public GameObject plantPrefab;
     [SerializeField]
     public CinemachineVirtualCamera camera;
-    private Transform previousTarget;
     public int plant_maxHealth = 1000;
     private int plant_health = 0;
     private int plant_toughness = 0;
@@ -27,6 +27,14 @@ public class GameSceneManager : Singleton<GameSceneManager>
     private int plant_plantedGainAmount = 12;
     private bool plant_isAlive = true;
     private Coroutine plantHealthLoop;
+
+    public Transform GetTarget() {
+        if (plantInstance != null) {
+            return plantInstance.transform;
+        } else {
+            return player.transform;
+        }
+    }
 
     void Awake() {
         plant_health = plant_maxHealth;
@@ -57,7 +65,6 @@ public class GameSceneManager : Singleton<GameSceneManager>
         var newPlant = Instantiate(plantPrefab, position, Quaternion.identity);
         plantInstance = newPlant;
         OnPlantCreated?.Invoke(newPlant);
-        previousTarget = camera.Follow;
         camera.Follow = plantInstance.transform;
         if (!plant_isAlive) {
             doPlantDeathPerformance();
@@ -69,7 +76,7 @@ public class GameSceneManager : Singleton<GameSceneManager>
 
         Destroy(plantInstance);
         OnPlantDestroyed?.Invoke();
-        camera.Follow = previousTarget;
+        camera.Follow = player.transform;
     }
 
     void StopPlantHealthLoop() {

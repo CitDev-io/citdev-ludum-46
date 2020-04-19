@@ -21,3 +21,4 @@ MonoBehaviour:
   rechargeCarryModeBonus: 6
   rechargeRate: 4
   lowEnergyCost: 6
+  damage: 10

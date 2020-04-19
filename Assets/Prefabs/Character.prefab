@@ -101,18 +101,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
   gravityModifier: 1
-  maxSpeed: 10
-  jumpTakeOffSpeed: 10
+  maxSpeed: 8
+  jumpTakeOffSpeed: 9000
   withPlantNoAnimationSprite: {fileID: 21300000, guid: 5fb514e90b282ac439e31b4502556dfa,
     type: 3}
   withoutPlantNoAnimationSprite: {fileID: 21300000, guid: 2a6aa1efa130c9346a15a6b2cdf4273b,
     type: 3}
-  bulletPrefab: {fileID: 8823477139030609899, guid: 5341e45ec2c185243aa65f8d86fbda47,
-    type: 3}
   bulletOrigin: {fileID: 1862347566}
   minimumDistanceToGetPlant: 1.5
-  bulletSpeed: 25
-  bulletRate: 200
+  gun: {fileID: 11400000, guid: 1a2485252bc52434fbac708f1b4f1e70, type: 2}
+  WithGunController: {fileID: 9100000, guid: 10a2a7d2487e30545b4822e45d873fbe, type: 2}
+  WithPlantController: {fileID: 22100000, guid: 4cd816770646c4a4b9fd816e604e2f39,
+    type: 2}
 --- !u!70 &5761960903528724985
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.45}
+  m_Offset: {x: 0, y: -0.3}
   m_Size: {x: 0.85, y: 2.05}
   m_Direction: 0
 --- !u!212 &5761960903528724988
@@ -166,9 +166,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 98902513
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 99
-  m_Sprite: {fileID: -300022967092176362, guid: 5df7b6d6d119a614d9266710eb1d8744,
+  m_Sprite: {fileID: 6204321219028974678, guid: 061a1e3f584d1e1459c9935e490646d7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

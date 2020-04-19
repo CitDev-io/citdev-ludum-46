@@ -10,11 +10,6 @@ public class ShowPlantHealth : MonoBehaviour
         EventManager.Instance.OnPlantHealthChange += HandlePlantHealthChange;
     }
 
-    void OnDestroy()
-    {
-        EventManager.Instance.OnPlantHealthChange -= HandlePlantHealthChange;
-    }
-
     void HandlePlantHealthChange(int health, int max) {       
         float percentHealth = (health * 100f) / max;
         GetComponent<RectTransform>().sizeDelta = new Vector2(percentHealth, 100);

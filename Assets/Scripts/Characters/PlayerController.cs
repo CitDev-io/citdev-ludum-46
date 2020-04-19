@@ -59,10 +59,6 @@ public class PlayerController : PhysicsObject {
         EventManager.Instance.OnPlantDied += HandlePlantDied;
     }
 
-    void OnDestroy() {
-        EventManager.Instance.OnPlantDied -= HandlePlantDied;
-    }
-
     void HandlePlantDied() {
         DropPlant();
         isPaused = true;
@@ -87,6 +83,7 @@ public class PlayerController : PhysicsObject {
         animator = GetComponent<Animator> ();
         lastPosition = GetComponent<Transform>().position;
         adjustGunEnergy(gun.maxEnergy);
+        gameObject.layer = LayerMask.NameToLayer("Plant");
         animator.runtimeAnimatorController = WithPlantController;
     }
 
@@ -130,6 +127,7 @@ public class PlayerController : PhysicsObject {
         droppedX = transform.position.x;
         droppedY = transform.position.y;
         animator.runtimeAnimatorController = WithGunController;
+        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     void PickUpPlant() {
@@ -138,6 +136,7 @@ public class PlayerController : PhysicsObject {
         spriteRenderer.sprite = withPlantNoAnimationSprite;
         animator.runtimeAnimatorController = WithPlantController;
         StopFiring();
+        gameObject.layer = LayerMask.NameToLayer("Plant");
     }
 
     IEnumerator FireIfShooting()
@@ -152,6 +151,7 @@ public class PlayerController : PhysicsObject {
                 isFiring = true;
                 adjustGunEnergy(-shotCost);
                 GameObject bulletClone = Instantiate(gun.projectilePrefab, bulletOrigin.position, Quaternion.identity);
+                bulletClone.GetComponent<Projectile>()?.SetDamage(gun.damage);
                 Rigidbody2D rb = bulletClone.GetComponent<Rigidbody2D>();
                 rb.velocity = new Vector2((spriteRenderer.flipX ? -1f : 1f) * gun.projectileSpeed, 0f);
             } else {
