@@ -44,7 +44,7 @@ public class PlayerController : PhysicsObject {
     private bool lastWalkingStatus = false;
     private bool lastGrounded = true;
 
-    private int gun_energy; // = 0;
+    private int gun_energy;
     private bool isPaused = false;
     [SerializeField]
     public GunConfiguration gun;
@@ -60,7 +60,7 @@ public class PlayerController : PhysicsObject {
     }
 
     void HandlePlantDied() {
-        AttemptToDropPlant();
+    //     AttemptToDropPlant();
         isPaused = true;
     }
 
@@ -164,6 +164,7 @@ public class PlayerController : PhysicsObject {
     }
 
     void PickUpPlant() {
+        StopFiring();
         carryingPlant = true;
         OnPickupPlantSuccess?.Invoke();
         spriteRenderer.sprite = withPlantNoAnimationSprite;

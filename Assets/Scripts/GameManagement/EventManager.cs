@@ -56,15 +56,19 @@ public class EventManager : Singleton<EventManager>
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            GAME_PAUSED = !GAME_PAUSED;
+            TogglePause();
+        }
+    }
 
-            if (GAME_PAUSED) {
-                OnGamePaused?.Invoke();
-                Time.timeScale = 0.0f;
-            } else {
-                OnGameUnpaused?.Invoke();
-                Time.timeScale = 1.0f;
-            }
+    void TogglePause () {
+        GAME_PAUSED = !GAME_PAUSED;
+
+        if (GAME_PAUSED) {
+            OnGamePaused?.Invoke();
+            Time.timeScale = 0.0f;
+        } else {
+            OnGameUnpaused?.Invoke();
+            Time.timeScale = 1.0f;
         }
     }
 
@@ -213,5 +217,11 @@ public class EventManager : Singleton<EventManager>
 
     public void ReportBadGuyDealtDamage() {
         OnBadGuyDealtDamage?.Invoke();
+    }
+
+    public void RequestUnpauseFromMenu() {
+        if (GAME_PAUSED) {
+            TogglePause();
+        }
     }
 }

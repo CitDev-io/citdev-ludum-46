@@ -136,9 +136,9 @@ public class GameSceneManager : Singleton<GameSceneManager>
      }
 
     void KillPlant() {
+        plant_isAlive = false;
         StopPlantHealthLoop();
         OnPlantDied?.Invoke();
-        plant_isAlive = false;
         if (plantInstance != null) {
             doPlantDeathPerformance();
         }
@@ -149,5 +149,20 @@ public class GameSceneManager : Singleton<GameSceneManager>
 
      public void ReportBadGuyDamagedPlant(int damage) {
          AdjustPlantHealth(-damage);
+     }
+
+     public void ReportPlayerInPit() {
+         if (plant_isAlive) {
+            Vector3 distanceDelta = plantInstance.transform.position - player.transform.position;
+            player.transform.position = plantInstance.transform.position;
+            camera.OnTargetObjectWarped(player.transform, distanceDelta);
+         }
+     }
+
+     public void ReportPlantInPit() {
+         if (plant_isAlive) {
+            camera.Follow = null;
+            KillPlant();
+         }
      }
 }

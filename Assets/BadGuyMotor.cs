@@ -21,6 +21,7 @@ public class BadGuyMotor : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         mgr = GameSceneManager.Instance;
         animator.SetBool("IsEntering", true);
+        rigidbody.isKinematic = true;
     }
 
     public void Die() {
@@ -60,8 +61,13 @@ public class BadGuyMotor : MonoBehaviour
         }
     }
     public void AnimationComplete() {
-        Debug.Log("RAN");
+        StartCoroutine(Activate());
+    }
+
+    IEnumerator Activate() {
+        yield return new WaitForSeconds(0.1f);
         animator.SetBool("IsEntering", false);
         entering = false;
+        rigidbody.isKinematic = false;
     }
 }

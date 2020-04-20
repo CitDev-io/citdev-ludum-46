@@ -51,14 +51,14 @@ public class AudioManager : Singleton<AudioManager>
         PlaySound("Plant_Dropped");
 
         backgroundMusicAS.time = 0f;
-        backgroundMusicAS2.volume = 0.001f;
+        backgroundMusicAS2.volume = 0.125f;
         // backgroundMusicAS2.Pause();
         backgroundMusicAS.Play();
     }
 
     void HandlePickedUpPlant() {
         PlaySound("Plant_PickedUp");
-                backgroundMusicAS2.volume = 0.005f;
+        backgroundMusicAS2.volume = 0.3f;
         backgroundMusicAS.Stop();
     }
 
