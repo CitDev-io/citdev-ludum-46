@@ -140,7 +140,7 @@ public class EventManager : Singleton<EventManager>
     }
 
     private void HandlePlayerStoppedShooting() {
-        OnPlayerStartedShooting?.Invoke();
+        OnPlayerStoppedShooting?.Invoke();
     }
 
     private void HandlePlayerFailedShotNoEnergy() {
