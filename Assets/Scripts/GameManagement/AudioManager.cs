@@ -51,7 +51,6 @@ public class AudioManager : Singleton<AudioManager>
     void PlaySound(string name)
     {
         AudioClip audioClip = GetAudioClipByName(name);
-        Debug.Log(audioClip);
         if (audioClip != null) {
             audioSource.PlayOneShot(audioClip);
         } else {
