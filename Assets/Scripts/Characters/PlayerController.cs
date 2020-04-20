@@ -60,7 +60,7 @@ public class PlayerController : PhysicsObject {
     }
 
     void HandlePlantDied() {
-        DropPlant();
+        AttemptToDropPlant();
         isPaused = true;
     }
 
@@ -105,8 +105,9 @@ public class PlayerController : PhysicsObject {
     }
 
     void AttemptToDropPlant() {
-        // TODO: Check if this is a good time/place?
-        DropPlant();
+        if (carryingPlant) {
+            DropPlant();
+        }
     }
 
     void AttemptToPickUpPlant() {

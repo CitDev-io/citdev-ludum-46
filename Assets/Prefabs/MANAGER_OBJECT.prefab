@@ -60,6 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3948c3b2f47646e44ab88cb71578e5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playing: {fileID: 0}
+  GameOver: {fileID: 0}
+  Paused: {fileID: 0}
 --- !u!114 &5123089668244567229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +105,7 @@ MonoBehaviour:
     type: 3}
   camera: {fileID: 0}
   plant_maxHealth: 1000
+  distancePointBonus: 283
 --- !u!1001 &643528767877458689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,12 +121,12 @@ PrefabInstance:
     - target: {fileID: 5761960903528724990, guid: a2da6a629896fd64eb164982053a2150,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5761960903528724990, guid: a2da6a629896fd64eb164982053a2150,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.97
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5761960903528724990, guid: a2da6a629896fd64eb164982053a2150,
         type: 3}

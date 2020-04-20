@@ -94,7 +94,7 @@ public class GameSceneManager : Singleton<GameSceneManager>
         OnPlantCreated?.Invoke(newPlant);
         camera.Follow = plantInstance.transform;
         if (!plant_isAlive) {
-            doPlantDeathPerformance();
+            KillPlant();
         }
     }
 
@@ -127,21 +127,24 @@ public class GameSceneManager : Singleton<GameSceneManager>
      }
 
      private void AdjustPlantHealth(int adjustment) {
+         if (!plant_isAlive) return;
          plant_health = Mathf.Clamp(plant_health + adjustment, 0, plant_maxHealth);
          OnPlantHealthChange?.Invoke(plant_health, plant_maxHealth);
          if (plant_health == 0) {
-            StopPlantHealthLoop();
-            OnPlantDied?.Invoke();
-            if (plantInstance != null) {
-                doPlantDeathPerformance();
-            }
+            KillPlant();
          }
      }
 
+    void KillPlant() {
+        StopPlantHealthLoop();
+        OnPlantDied?.Invoke();
+        plant_isAlive = false;
+        if (plantInstance != null) {
+            doPlantDeathPerformance();
+        }
+    }
      void doPlantDeathPerformance() {
-         if (plantInstance != null) {
-             plantInstance.GetComponent<Animator>().SetBool("IsDead", true);
-         }
+        plantInstance.GetComponent<Animator>().SetBool("IsDead", true);
      }
 
      public void ReportBadGuyDamagedPlant(int damage) {

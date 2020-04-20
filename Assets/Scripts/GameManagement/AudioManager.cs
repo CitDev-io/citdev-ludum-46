@@ -11,10 +11,22 @@ public class AudioManager : Singleton<AudioManager>
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        EventManager.Instance.OnPlayerJumpSuccessful += HandleJump;
     }
 
-    private void OnDestroy()
-    {
+    void HandleJump() {
+        PlaySound("boom");
+    }
 
+    void PlaySound(string name)
+    {
+        AudioClip audioClip = GetAudioClipByName(name);
+        if (audioClip != null) {
+            audioSource.PlayOneShot(audioClip);
+        }
+    }
+    AudioClip GetAudioClipByName(string clipName)
+    {
+        return (AudioClip)Resources.Load("Sounds/" + clipName);
     }
 }

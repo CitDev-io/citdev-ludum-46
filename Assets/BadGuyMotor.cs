@@ -13,6 +13,7 @@ public class BadGuyMotor : MonoBehaviour
     public int damageToPlant = 10;
     private bool isChasing = true;
     private bool entering = true;
+    private float maxSpeed = 6.4f;
 
     void Start() {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -35,8 +36,10 @@ public class BadGuyMotor : MonoBehaviour
             float targetX = mgr.GetTarget().position.x;
             bool goLeft = targetX < transform.position.x;
             spriteRenderer.flipX = !goLeft;
-            float force = (goLeft ? -1 : 1) * movementSpeed * 10;
-            rigidbody.AddForce(new Vector2(force, 0.1f));
+            if (rigidbody.velocity.magnitude < maxSpeed) {
+                float force = (goLeft ? -1 : 1) * movementSpeed * 10;
+                rigidbody.AddForce(new Vector2(force, 0.1f));
+            }
         }
     }
 
