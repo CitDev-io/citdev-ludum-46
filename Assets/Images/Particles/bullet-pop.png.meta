@@ -1,25 +1,46 @@
 fileFormatVersion: 2
-guid: 3abd91226451aa7439c44731bb454eb0
+guid: 0e8d7a947f512b145919725323beaa46
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2346302928887187388
-    second: bullet_0
+      213: 6021921436486555388
+    second: bullet-pop_0
   - first:
-      213: 5379323082974078785
-    second: bullet_1
+      213: 6019129446535992509
+    second: bullet-pop_1
   - first:
-      213: -2863499236874410579
-    second: bullet_2
+      213: -4282121381148927583
+    second: bullet-pop_2
   - first:
-      213: 6740024121541949626
-    second: bullet_3
+      213: 8284100281409329439
+    second: bullet-pop_3
   - first:
-      213: -470569841363968007
-    second: bullet_4
+      213: -4895872466470567253
+    second: bullet-pop_4
   - first:
-      213: 6566341438952775323
-    second: bullet_5
+      213: -4126471845666760869
+    second: bullet-pop_5
+  - first:
+      213: 2663194454771345656
+    second: bullet-pop_0
+  - first:
+      213: 2991181656242117481
+    second: bullet-pop_1
+  - first:
+      213: -510329915615620190
+    second: bullet-pop_2
+  - first:
+      213: 1193050242671299290
+    second: bullet-pop_3
+  - first:
+      213: -7830160654012601609
+    second: bullet-pop_4
+  - first:
+      213: 4634165008333002545
+    second: bullet-pop_5
+  - first:
+      213: 8512457764645798920
+    second: bullet-pop_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -117,7 +138,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bullet_0
+      name: bullet-pop_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 448783cdae1407fd0800000000000000
-      internalID: -2346302928887187388
+      spriteID: 8f8af641f3195f420800000000000000
+      internalID: 2663194454771345656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bullet_1
+      name: bullet-pop_1
       rect:
         serializedVersion: 2
         x: 500
@@ -152,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 147aab4d7d137aa40800000000000000
-      internalID: 5379323082974078785
+      spriteID: 96bd9fe4edfc28920800000000000000
+      internalID: 2991181656242117481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bullet_2
+      name: bullet-pop_2
       rect:
         serializedVersion: 2
         x: 1000
@@ -173,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da5af739d9ec248d0800000000000000
-      internalID: -2863499236874410579
+      spriteID: 2a3d97545a1fae8f0800000000000000
+      internalID: -510329915615620190
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bullet_3
+      name: bullet-pop_3
       rect:
         serializedVersion: 2
         x: 1500
@@ -194,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab872167a30698d50800000000000000
-      internalID: 6740024121541949626
+      spriteID: adacd99efd09e8010800000000000000
+      internalID: 1193050242671299290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bullet_4
+      name: bullet-pop_4
       rect:
         serializedVersion: 2
         x: 2000
@@ -215,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ff1d73f8333879f0800000000000000
-      internalID: -470569841363968007
+      spriteID: 7faa6530f5ea55390800000000000000
+      internalID: -7830160654012601609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bullet_5
+      name: bullet-pop_5
       rect:
         serializedVersion: 2
         x: 2500
@@ -236,8 +257,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9e15beafb4502b50800000000000000
-      internalID: 6566341438952775323
+      spriteID: 137db30b58cdf4040800000000000000
+      internalID: 4634165008333002545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bullet-pop_6
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8048a3b6c33522670800000000000000
+      internalID: 8512457764645798920
       vertices: []
       indices: 
       edges: []

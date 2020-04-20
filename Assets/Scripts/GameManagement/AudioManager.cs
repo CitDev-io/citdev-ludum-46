@@ -11,7 +11,7 @@ public class AudioManager : Singleton<AudioManager>
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        EventManager.Instance.OnPlayerJumpSuccessful += HandleJump;
+        EventManager.Instance.OnPlayerStoppedShooting += HandleJump;
     }
 
     void HandleJump() {

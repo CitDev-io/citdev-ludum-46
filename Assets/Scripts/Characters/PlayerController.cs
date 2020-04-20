@@ -155,6 +155,7 @@ public class PlayerController : PhysicsObject {
                 bulletClone.GetComponent<Projectile>()?.SetDamage(gun.damage);
                 Rigidbody2D rb = bulletClone.GetComponent<Rigidbody2D>();
                 rb.velocity = new Vector2((spriteRenderer.flipX ? -1f : 1f) * gun.projectileSpeed, 0f);
+                bulletClone.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
             } else {
                 OnShootFailedNoEnergy?.Invoke();
             }

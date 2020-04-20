@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf31e1c59ca2ff145962f67b2c002c71, type: 3}
-  m_Name: BaseGun
+  m_Name: laser
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 8823477139030609899, guid: 5341e45ec2c185243aa65f8d86fbda47,
-    type: 3}
-  projectileSpeed: 18
-  projectileRate: 8
-  maxEnergy: 3500
-  fireCost: 60
-  rechargeCarryModeBonus: 6
-  rechargeRate: 4
-  lowEnergyCost: 6
-  damage: 100
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 0
+  projectileRate: 0
+  maxEnergy: 0
+  fireCost: 0
+  rechargeCarryModeBonus: 0
+  rechargeRate: 0
+  lowEnergyCost: 0
+  damage: 0
