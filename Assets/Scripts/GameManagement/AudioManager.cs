@@ -11,18 +11,51 @@ public class AudioManager : Singleton<AudioManager>
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        EventManager.Instance.OnPlayerStoppedShooting += HandleJump;
+        EventManager.Instance.OnPlayerJumpSuccessful += HandleJump;
+        EventManager.Instance.OnPlayerLanded += HandleLand;
+        EventManager.Instance.OnPlayerShotFailedNoEnergy += HandleShotFailedNoEnergy;
+        EventManager.Instance.OnPlayerStartedShooting += HandleStartedShooting;
+        EventManager.Instance.OnPlayerStoppedShooting += HandleStoppedShooting;
+        EventManager.Instance.OnPlayerDropPlantSuccess += HandleDroppedPlant;
+        EventManager.Instance.OnPlayerPickupPlantSuccess += HandlePickedUpPlant;
     }
 
     void HandleJump() {
-        PlaySound("boom");
+        PlaySound("Jumping");
+    }
+
+    void HandleLand() {
+        PlaySound("Landing");
+    }
+
+    void HandleShotFailedNoEnergy() {
+        PlaySound("Firing_OutOfEnergy");
+    }
+
+    void HandleStartedShooting() {
+        PlaySound("Firing_WithEnergy");
+    }
+
+    void HandleStoppedShooting() {
+        PlaySound("Firing_Stops");
+    }
+
+    void HandleDroppedPlant(Vector3 position) {
+        PlaySound("Plant_Dropped");
+    }
+
+    void HandlePickedUpPlant() {
+        PlaySound("Plant_PickedUp");
     }
 
     void PlaySound(string name)
     {
         AudioClip audioClip = GetAudioClipByName(name);
+        Debug.Log(audioClip);
         if (audioClip != null) {
             audioSource.PlayOneShot(audioClip);
+        } else {
+            Debug.Log("null audio clip: " + name);
         }
     }
     AudioClip GetAudioClipByName(string clipName)

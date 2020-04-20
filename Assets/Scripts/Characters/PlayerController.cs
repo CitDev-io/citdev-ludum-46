@@ -95,6 +95,10 @@ public class PlayerController : PhysicsObject {
 
     void Update() {
         base.Update();
+        if (isPaused) {
+            return;
+        }
+
         if (Input.GetButtonDown("UsePlant")) {
             if (carryingPlant) {
                 AttemptToDropPlant();
@@ -102,12 +106,40 @@ public class PlayerController : PhysicsObject {
                 AttemptToPickUpPlant();
             }
         }
+        
+        if (Input.GetButtonDown("Jump")) {
+            if (grounded) {
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpTakeOffSpeed));
+                OnJumpSuccessful?.Invoke();
+            }
+        }
+        
+        if (Input.GetButtonUp("Jump")) {
+            if (!grounded) {
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -0.25f * jumpTakeOffSpeed));
+            }
+        }
+
+        if (Input.GetButtonDown("Fire1")) {
+            if (carryingPlant) {
+                OnShootFailedNoGun?.Invoke();
+            } else {
+                StopFiring();
+                firingSequence = StartCoroutine(FireIfShooting());
+                isFiring = true;
+            }
+        }
+
+        if (Input.GetButtonUp("Fire1")) {
+            if (isFiring) {
+                StopFiring();
+            }
+        }
     }
 
     void AttemptToDropPlant() {
-        if (carryingPlant) {
-            DropPlant();
-        }
+        // TODO: Check if this is a good time/place?
+        DropPlant();
     }
 
     void AttemptToPickUpPlant() {
@@ -136,7 +168,6 @@ public class PlayerController : PhysicsObject {
         OnPickupPlantSuccess?.Invoke();
         spriteRenderer.sprite = withPlantNoAnimationSprite;
         animator.runtimeAnimatorController = WithPlantController;
-        StopFiring();
         gameObject.layer = LayerMask.NameToLayer("Plant");
     }
 
@@ -146,7 +177,7 @@ public class PlayerController : PhysicsObject {
         var key = Random.Range(0,600);
         while(true) 
          { 
-            int shotCost = gun.fireCost + (gun_energy/gun.maxEnergy < 0.25 ? gun.lowEnergyCost : 0);
+            int shotCost = ComputeShotCost();
             if (gun_energy >= shotCost) {
                 OnShootSuccess?.Invoke();
                 isFiring = true;
@@ -157,6 +188,7 @@ public class PlayerController : PhysicsObject {
                 rb.velocity = new Vector2((spriteRenderer.flipX ? -1f : 1f) * gun.projectileSpeed, 0f);
                 bulletClone.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
             } else {
+                gameObject.AddComponent<AudioSource >().PlayOneShot((AudioClip)Resources.Load("Firing_OutOfEnergy"));
                 OnShootFailedNoEnergy?.Invoke();
             }
             yield return new WaitForSeconds(1f/gun.projectileRate);
@@ -169,32 +201,6 @@ public class PlayerController : PhysicsObject {
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis ("Horizontal");
-
-        if (Input.GetButtonDown ("Jump")) {
-            if (grounded) {
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpTakeOffSpeed));
-                OnJumpSuccessful?.Invoke();
-            }
-        } else if (Input.GetButtonUp ("Jump")) 
-        {
-            if (!grounded) {
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -0.25f * jumpTakeOffSpeed));
-            }
-        }
-
-
-        if (Input.GetButtonDown("Fire1")) {
-            if (carryingPlant) {
-                OnShootFailedNoGun?.Invoke();
-                return;
-            }
-            StopFiring();
-            firingSequence = StartCoroutine(FireIfShooting());
-            isFiring = true;
-        }
-        if (Input.GetButtonUp("Fire1")) {
-            StopFiring();
-        }
 
         if (Mathf.Abs(move.x) > 0.025f) {
             bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
@@ -242,5 +248,9 @@ public class PlayerController : PhysicsObject {
         lastGrounded = grounded;
         lastPosition = transform.position;
         lastWalkingStatus = isWalking;
+    }
+
+    private int ComputeShotCost() {
+        return gun.fireCost + (gun_energy/gun.maxEnergy < 0.25 ? gun.lowEnergyCost : 0);
     }
 }
