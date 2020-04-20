@@ -60,7 +60,7 @@ public class PlayerController : PhysicsObject {
     }
 
     void HandlePlantDied() {
-        DropPlant();
+        AttemptToDropPlant();
         isPaused = true;
     }
 
