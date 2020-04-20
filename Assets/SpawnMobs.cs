@@ -37,8 +37,8 @@ public class SpawnMobs : MonoBehaviour
             if (!plantInHand) {
                 timeToNext = timeToNext / spawnMultiplierWhenPlantDown;
             }
-            Instantiate(mobPrefab, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(timeToNext);
+            Instantiate(mobPrefab, transform.position, Quaternion.identity);
         }
     }
 }

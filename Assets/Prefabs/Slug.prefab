@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 10
   damageToPlant: 300
+  isFlying: 0
 --- !u!58 &1694035047880661629
 CircleCollider2D:
   m_ObjectHideFlags: 0
