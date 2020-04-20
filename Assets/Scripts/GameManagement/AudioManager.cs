@@ -20,6 +20,7 @@ public class AudioManager : Singleton<AudioManager>
         EventManager.Instance.OnPlayerDropPlantSuccess += HandleDroppedPlant;
         EventManager.Instance.OnPlayerPickupPlantSuccess += HandlePickedUpPlant;
         EventManager.Instance.OnPlantDied += HandlePlantDeath;
+        EventManager.Instance.OnBadGuyDied += HandleBadGuyDied;
     }
 
     void HandleJump() {
@@ -56,6 +57,10 @@ public class AudioManager : Singleton<AudioManager>
 
     void HandleDirectionChange(bool direction) {
         PlaySound("Player_ChangeDirection");
+    }
+
+    void HandleBadGuyDied() {
+        PlaySound("Grub_Death");
     }
 
     void PlaySound(string name)
