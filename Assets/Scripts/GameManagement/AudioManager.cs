@@ -7,6 +7,10 @@ using UnityEngine;
 public class AudioManager : Singleton<AudioManager>
 {
     AudioSource audioSource;
+    [SerializeField]
+    public AudioSource backgroundMusicAS;
+    [SerializeField]
+    public AudioSource backgroundMusicAS2;
 
     void Start()
     {
@@ -42,16 +46,22 @@ public class AudioManager : Singleton<AudioManager>
 
     void HandleDroppedPlant(Vector3 position) {
         PlaySound("Plant_Dropped");
+
+        backgroundMusicAS.time = 0f;
+        backgroundMusicAS2.volume = 0.001f;
+        // backgroundMusicAS2.Pause();
+        backgroundMusicAS.Play();
     }
 
     void HandlePickedUpPlant() {
         PlaySound("Plant_PickedUp");
+                backgroundMusicAS2.volume = 0.005f;
+        backgroundMusicAS.Stop();
     }
 
     void PlaySound(string name)
     {
         AudioClip audioClip = GetAudioClipByName(name);
-        Debug.Log(audioClip);
         if (audioClip != null) {
             audioSource.PlayOneShot(audioClip);
         } else {
