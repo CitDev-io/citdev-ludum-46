@@ -13,6 +13,7 @@ public class AudioManager : Singleton<AudioManager>
         audioSource = GetComponent<AudioSource>();
         EventManager.Instance.OnPlayerJumpSuccessful += HandleJump;
         EventManager.Instance.OnPlayerLanded += HandleLand;
+        EventManager.Instance.OnPlayerChangeDirection += HandleDirectionChange;
         EventManager.Instance.OnPlayerShotFailedNoEnergy += HandleShotFailedNoEnergy;
         EventManager.Instance.OnPlayerStartedShooting += HandleStartedShooting;
         EventManager.Instance.OnPlayerStoppedShooting += HandleStoppedShooting;
@@ -51,6 +52,10 @@ public class AudioManager : Singleton<AudioManager>
 
     void HandlePlantDeath() {
         PlaySound("Plant_Death");
+    }
+
+    void HandleDirectionChange(bool direction) {
+        PlaySound("Player_ChangeDirection");
     }
 
     void PlaySound(string name)
