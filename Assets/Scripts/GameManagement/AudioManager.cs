@@ -16,6 +16,8 @@ public class AudioManager : Singleton<AudioManager>
         EventManager.Instance.OnPlayerShotFailedNoEnergy += HandleShotFailedNoEnergy;
         EventManager.Instance.OnPlayerStartedShooting += HandleStartedShooting;
         EventManager.Instance.OnPlayerStoppedShooting += HandleStoppedShooting;
+        EventManager.Instance.OnPlayerDropPlantSuccess += HandleDroppedPlant;
+        EventManager.Instance.OnPlayerPickupPlantSuccess += HandlePickedUpPlant;
     }
 
     void HandleJump() {
@@ -27,18 +29,23 @@ public class AudioManager : Singleton<AudioManager>
     }
 
     void HandleShotFailedNoEnergy() {
-        Debug.Log("NO ENERGY");
         PlaySound("Firing_OutOfEnergy");
     }
 
     void HandleStartedShooting() {
-        Debug.Log("FIRING");
         PlaySound("Firing_WithEnergy");
     }
 
     void HandleStoppedShooting() {
-        Debug.Log("STOP FIRING");
         PlaySound("Firing_Stops");
+    }
+
+    void HandleDroppedPlant(Vector3 position) {
+        PlaySound("Plant_Dropped");
+    }
+
+    void HandlePickedUpPlant() {
+        PlaySound("Plant_PickedUp");
     }
 
     void PlaySound(string name)
