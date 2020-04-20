@@ -16,6 +16,8 @@ public delegate void FloatDelegate(float flt);
 
 public class EventManager : Singleton<EventManager>
 {
+    public NoParamDelegate OnPlayerShoot;
+    public NoParamDelegate OnGameOver;
     public NoParamDelegate OnGameUnpaused;
     public NoParamDelegate OnGamePaused;
     public LongDelegate OnPlayerScoreChanged;
@@ -60,6 +62,13 @@ public class EventManager : Singleton<EventManager>
         }
     }
 
+    IEnumerator PauseAfterDelay(float delay) {
+        yield return new WaitForSeconds(delay);
+        Time.timeScale = 0.0f;
+        GAME_PAUSED = true;
+        Debug.Log("PAUSE");
+    }
+
     void TogglePause () {
         GAME_PAUSED = !GAME_PAUSED;
 
@@ -98,6 +107,8 @@ public class EventManager : Singleton<EventManager>
 
     void HandlePlantDied() {
         OnPlantDied?.Invoke();
+        OnGameOver?.Invoke();
+        StartCoroutine(PauseAfterDelay(0.4f));
     }
 
     public void SubscribeToPlayerFeed(PlayerController pc) {
@@ -114,6 +125,7 @@ public class EventManager : Singleton<EventManager>
         pc.OnStartRunning += HandlePlayerStartRunning;
         pc.OnStopRunning += HandlePlayerStopRunning;
         pc.OnLanding += HandlePlayerLanding;
+        pc.OnShoot += HandlePlayerShoot;
         pc.OnShootEnd += HandlePlayerStoppedShooting;
         pc.OnShootFailedNoEnergy += HandlePlayerFailedShotNoEnergy;
         pc.OnShootFailedNoGun += HandlePlayerFailedShotNoGun;
@@ -132,13 +144,16 @@ public class EventManager : Singleton<EventManager>
         pc.OnStartRunning -= HandlePlayerStartRunning;
         pc.OnStopRunning -= HandlePlayerStopRunning;
         pc.OnLanding -= HandlePlayerLanding;
+        pc.OnShoot -= HandlePlayerShoot;
         pc.OnShootEnd -= HandlePlayerStoppedShooting;
         pc.OnShootFailedNoEnergy -= HandlePlayerFailedShotNoEnergy;
         pc.OnShootFailedNoGun -= HandlePlayerFailedShotNoGun;
         pc.OnShootStart -= HandlePlayerStartedShooting;
         pc.OnGunChargeChange -= HandlePlayerGunChargeChange;
     }
-
+    private void HandlePlayerShoot() {
+        OnPlayerShoot();
+    }
     private void HandlePlayerGunChargeChange(int charge, int max) {
         OnPlayerGunChargeChange?.Invoke(charge, max);
     }
@@ -223,5 +238,10 @@ public class EventManager : Singleton<EventManager>
         if (GAME_PAUSED) {
             TogglePause();
         }
+    }
+
+    public void ReportGameOver() {
+        OnGameOver?.Invoke();
+        StartCoroutine(PauseAfterDelay(0.4f));
     }
 }

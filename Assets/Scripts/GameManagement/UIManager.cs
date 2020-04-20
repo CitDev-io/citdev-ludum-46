@@ -14,7 +14,7 @@ public class UIManager : Singleton<UIManager>
         Playing.SetActive(true);
         GameOver.SetActive(false);
         Paused.SetActive(false);
-        EventManager.Instance.OnPlantDied += GameEnded;
+        EventManager.Instance.OnGameOver += GameEnded;
         EventManager.Instance.OnGamePaused += Pause;
         EventManager.Instance.OnGameUnpaused += Unpause;
     }

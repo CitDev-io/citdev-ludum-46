@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : PhysicsObject {
+    public NoParamDelegate OnShoot;
     public DoubleIntDelegate OnGunChargeChange;
     public NoParamDelegate OnStartRunning;
     public NoParamDelegate OnStopRunning;
@@ -60,7 +61,7 @@ public class PlayerController : PhysicsObject {
     }
 
     void HandlePlantDied() {
-    //     AttemptToDropPlant();
+        //AttemptToDropPlant();
         isPaused = true;
     }
 
@@ -183,6 +184,7 @@ public class PlayerController : PhysicsObject {
                 OnShootSuccess?.Invoke();
                 isFiring = true;
                 adjustGunEnergy(-shotCost);
+                OnShoot?.Invoke();
                 GameObject bulletClone = Instantiate(gun.projectilePrefab, bulletOrigin.position, Quaternion.identity);
                 bulletClone.GetComponent<Projectile>()?.SetDamage(gun.damage);
                 Rigidbody2D rb = bulletClone.GetComponent<Rigidbody2D>();

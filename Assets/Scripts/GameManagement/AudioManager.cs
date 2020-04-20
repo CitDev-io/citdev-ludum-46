@@ -16,10 +16,9 @@ public class AudioManager : Singleton<AudioManager>
     {
         audioSource = GetComponent<AudioSource>();
         EventManager.Instance.OnPlayerJumpSuccessful += HandleJump;
-        EventManager.Instance.OnPlayerLanded += HandleLand;
         EventManager.Instance.OnPlayerChangeDirection += HandleDirectionChange;
         EventManager.Instance.OnPlayerShotFailedNoEnergy += HandleShotFailedNoEnergy;
-        EventManager.Instance.OnPlayerStartedShooting += HandleStartedShooting;
+        EventManager.Instance.OnPlayerShoot += HandleShooting;
         EventManager.Instance.OnPlayerStoppedShooting += HandleStoppedShooting;
         EventManager.Instance.OnPlayerDropPlantSuccess += HandleDroppedPlant;
         EventManager.Instance.OnPlayerPickupPlantSuccess += HandlePickedUpPlant;
@@ -31,15 +30,15 @@ public class AudioManager : Singleton<AudioManager>
         PlaySound("Jumping");
     }
 
-    void HandleLand() {
-        PlaySound("Landing");
-    }
+    // void HandleLand() {
+    //     PlaySound("Landing");
+    // }
 
     void HandleShotFailedNoEnergy() {
         PlaySound("Firing_OutOfEnergy");
     }
 
-    void HandleStartedShooting() {
+    void HandleShooting() {
         PlaySound("Firing_WithEnergy");
     }
 

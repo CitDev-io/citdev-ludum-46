@@ -162,7 +162,7 @@ public class GameSceneManager : Singleton<GameSceneManager>
      public void ReportPlantInPit() {
          if (plant_isAlive) {
             camera.Follow = null;
-            KillPlant();
+            EventManager.Instance.ReportGameOver();
          }
      }
 }
