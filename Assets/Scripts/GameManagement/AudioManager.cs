@@ -70,7 +70,7 @@ public class AudioManager : Singleton<AudioManager>
         PlaySound("Player_ChangeDirection");
     }
 
-    void HandleBadGuyDied() {
+    void HandleBadGuyDied(Vector2 pos) {
         PlaySound("Grub_Death");
     }
 
