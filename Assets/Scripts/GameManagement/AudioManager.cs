@@ -18,6 +18,7 @@ public class AudioManager : Singleton<AudioManager>
         EventManager.Instance.OnPlayerStoppedShooting += HandleStoppedShooting;
         EventManager.Instance.OnPlayerDropPlantSuccess += HandleDroppedPlant;
         EventManager.Instance.OnPlayerPickupPlantSuccess += HandlePickedUpPlant;
+        EventManager.Instance.OnPlantDied += HandlePlantDeath;
     }
 
     void HandleJump() {
@@ -48,6 +49,10 @@ public class AudioManager : Singleton<AudioManager>
         PlaySound("Plant_PickedUp");
     }
 
+    void HandlePlantDeath() {
+        PlaySound("Plant_Death");
+    }
+
     void PlaySound(string name)
     {
         AudioClip audioClip = GetAudioClipByName(name);
@@ -57,6 +62,7 @@ public class AudioManager : Singleton<AudioManager>
             Debug.Log("null audio clip: " + name);
         }
     }
+
     AudioClip GetAudioClipByName(string clipName)
     {
         return (AudioClip)Resources.Load("Sounds/" + clipName);
