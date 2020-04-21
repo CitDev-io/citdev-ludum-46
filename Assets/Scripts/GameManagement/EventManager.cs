@@ -16,6 +16,9 @@ public delegate void FloatDelegate(float flt);
 
 public class EventManager : Singleton<EventManager>
 {
+    public NoParamDelegate OnPayAnimation;
+    public NoParamDelegate OnButtonClick;
+    public NoParamDelegate OnPlantHealthFilled;
     public NoParamDelegate OnPlayerShoot;
     public NoParamDelegate OnGameOver;
     public NoParamDelegate OnGameUnpaused;
@@ -59,6 +62,7 @@ public class EventManager : Singleton<EventManager>
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             TogglePause();
+            OnButtonClick?.Invoke();
         }
     }
 
@@ -87,6 +91,7 @@ public class EventManager : Singleton<EventManager>
         GameSceneManager.Instance.OnPlantHealthChange += HandlePlantHealthChange;
         GameSceneManager.Instance.OnPlantDied += HandlePlantDied;
         GameSceneManager.Instance.OnScoreChange += HandleScoreChange;
+        GameSceneManager.Instance.OnPlantHealthFilled += HandlePlantHealthFilled;
     }
 
     void UnsubscribeToGameFeed() {
@@ -95,6 +100,11 @@ public class EventManager : Singleton<EventManager>
         GameSceneManager.Instance.OnPlantHealthChange -= HandlePlantHealthChange;
         GameSceneManager.Instance.OnPlantDied -= HandlePlantDied;
         GameSceneManager.Instance.OnScoreChange -= HandleScoreChange;
+        GameSceneManager.Instance.OnPlantHealthFilled -= HandlePlantHealthFilled;
+    }
+
+    void HandlePlantHealthFilled() {
+        OnPlantHealthFilled?.Invoke();
     }
 
     void HandleScoreChange(long score) {
@@ -243,5 +253,13 @@ public class EventManager : Singleton<EventManager>
     public void ReportGameOver() {
         OnGameOver?.Invoke();
         StartCoroutine(PauseAfterDelay(0.4f));
+    }
+
+    public void ReportButtonClick() {
+        OnButtonClick?.Invoke();
+    }
+
+    public void ReportPayAnimation() {
+        OnPayAnimation?.Invoke();
     }
 }

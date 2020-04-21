@@ -12,6 +12,6 @@ public class showGunEnergy : MonoBehaviour
 
     void HandleGunChargeChange(int charge, int max) {       
         float percentCharge = (charge * 100f) / max;
-        GetComponent<RectTransform>().sizeDelta = new Vector2(percentCharge, 100);
+        GetComponent<RectTransform>().sizeDelta = new Vector2(percentCharge*1.35f, 100);
     }
 }

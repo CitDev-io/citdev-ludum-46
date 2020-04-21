@@ -16,6 +16,7 @@ public class BadGuyMotor : MonoBehaviour
     private float maxSpeed = 6.4f;
     public bool isFlying = true;
     private float yTarget = 2f;
+    private float startDirection = -1f;
 
     void Start() {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -28,6 +29,13 @@ public class BadGuyMotor : MonoBehaviour
         } else {
             AnimationComplete();
         }
+        Transform target = mgr.GetTarget();
+        float targetX = target.position.x;
+        startDirection = targetX < transform.position.x ? -1f : 1f;
+        if (startDirection >= 0f) {
+            spriteRenderer.flipX = true;
+        }
+
     }
 
     public void Die() {
@@ -36,28 +44,32 @@ public class BadGuyMotor : MonoBehaviour
         isChasing = false;
         gameObject.layer = LayerMask.NameToLayer("TheDead");
         EventManager.Instance.ReportBadGuyDied(transform.position);
+        if (isFlying) {
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+            GetComponent<Rigidbody2D>().gravityScale = -0.25f;
+        }
     }
 
     void FixedUpdate() {
+        if (isFlying && !isChasing && movementSpeed == 0f) {
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+        }
         if (isChasing && !entering) {
             Transform target = mgr.GetTarget();
             float targetX = target.position.x;
             bool goLeft = targetX < transform.position.x;
-            spriteRenderer.flipX = !goLeft;
+            float force = (goLeft ? -1 : 1) * movementSpeed * 10;
+            
+
             if (isFlying) {
-                float distanceRemaining = Mathf.Clamp((transform.position - target.position).magnitude, 0f, 8f);
-                float adjustment = yTarget >= distanceRemaining ? 0.015f - (distanceRemaining / 1000f) : -0.015f + (distanceRemaining / 1000f);
-                yTarget = Mathf.Clamp(yTarget + adjustment, 0.5f, 7f);
-                    
-                Vector2 targetPosition = new Vector2(target.position.x, target.position.y + yTarget);
-                Vector2 newPosition = Vector2.MoveTowards(transform.position, targetPosition, movementSpeed);
-                rigidbody.MovePosition(newPosition);
+                force = startDirection * movementSpeed * 10f;
             } else {
-                if (rigidbody.velocity.magnitude < maxSpeed) {
-                    float force = (goLeft ? -1 : 1) * movementSpeed * 10;
-                    rigidbody.AddForce(new Vector2(force, 0.01f));
-                }
+                spriteRenderer.flipX = !goLeft;
             }
+            if (rigidbody.velocity.magnitude < maxSpeed) {
+                rigidbody.AddForce(new Vector2(force, 0.01f));
+            }
+
         }
     }
 

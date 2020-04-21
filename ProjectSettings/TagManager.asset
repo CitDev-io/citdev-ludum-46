@@ -20,7 +20,7 @@ TagManager:
   - PlayerBoundary
   - TheDead
   - FriendlyChecker
-  - 
+  - EnemyChecker
   - 
   - 
   - 

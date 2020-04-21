@@ -134,6 +134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  popPrefab: {fileID: 2884605074597808669, guid: 101f53875bef1b44b8acc48d8f7e1426,
+    type: 3}
 --- !u!95 &1931218344
 Animator:
   serializedVersion: 3
@@ -167,5 +169,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.4, y: -0.06}
-  m_Size: {x: 1.45, y: 0.54}
+  m_Size: {x: 1.45, y: 0.63}
   m_Direction: 1

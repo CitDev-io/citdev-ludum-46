@@ -16,9 +16,9 @@ MonoBehaviour:
     type: 3}
   projectileSpeed: 18
   projectileRate: 8
-  maxEnergy: 3500
-  fireCost: 60
+  maxEnergy: 1250
+  fireCost: 75
   rechargeCarryModeBonus: 6
   rechargeRate: 4
   lowEnergyCost: 6
-  damage: 100
+  damage: 75

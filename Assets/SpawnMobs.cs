@@ -8,8 +8,8 @@ public class SpawnMobs : MonoBehaviour
     public GameObject mobPrefab;
     public float minSec = 1.7f;
     public float maxSec = 6f;
-    public float spawnMultiplierWhenPlantDown = 2f;
-    bool plantInHand = false;
+    bool plantInHand = true;
+    public bool spawnWhenPlantInHand = false;
 
     void Start()
     {
@@ -34,11 +34,10 @@ public class SpawnMobs : MonoBehaviour
     IEnumerator SpawnTime() {
         while (true) {
             float timeToNext = Random.Range(minSec, maxSec);
-            if (!plantInHand) {
-                timeToNext = timeToNext / spawnMultiplierWhenPlantDown;
-            }
             yield return new WaitForSeconds(timeToNext);
-            Instantiate(mobPrefab, transform.position, Quaternion.identity);
+            if (!plantInHand || spawnWhenPlantInHand) {
+                Instantiate(mobPrefab, transform.position, Quaternion.identity);
+            }
         }
     }
 }

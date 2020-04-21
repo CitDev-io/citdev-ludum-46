@@ -12,6 +12,6 @@ public class ShowPlantHealth : MonoBehaviour
 
     void HandlePlantHealthChange(int health, int max) {       
         float percentHealth = (health * 100f) / max;
-        GetComponent<RectTransform>().sizeDelta = new Vector2(percentHealth, 100);
+        GetComponent<RectTransform>().sizeDelta = new Vector2(percentHealth*1.35f, 100);
     }
 }

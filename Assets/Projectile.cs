@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     Animator animator;
     public int damage = 10;
+    [SerializeField] GameObject popPrefab;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -19,6 +20,7 @@ public class Projectile : MonoBehaviour
         }
         animator.SetBool("IsPopped", true);
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        Instantiate(popPrefab, transform.position, Quaternion.identity);
     }
 
     public void SetDamage(int dmg) {

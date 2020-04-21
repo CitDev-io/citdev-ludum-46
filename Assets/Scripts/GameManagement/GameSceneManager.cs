@@ -8,11 +8,13 @@ using Cinemachine;
 
 public class GameSceneManager : Singleton<GameSceneManager>
 {
+    public NoParamDelegate OnPlantHealthFilled;
     public LongDelegate OnScoreChange;
     public DoubleIntDelegate OnPlantHealthChange;
     public NoParamDelegate OnPlantDied;
     public GameObjectDelegate OnPlantCreated;
     public NoParamDelegate OnPlantDestroyed;
+    [SerializeField] GameObject LowHealthVignette;
     [SerializeField]
     public GameObject player;
     private GameObject plantInstance;
@@ -23,14 +25,14 @@ public class GameSceneManager : Singleton<GameSceneManager>
     public int plant_maxHealth = 1000;
     private int plant_health = 0;
     private int plant_toughness = 0;
-    private int plant_decayAndHealRate = 12;
+    private int plant_decayAndHealRate = 10;
     private int plant_decayAmount = 6;
-    private int plant_plantedGainAmount = 12;
+    private int plant_plantedGainAmount = 10;
     private bool plant_isAlive = true;
     private Coroutine plantHealthLoop;
     private float maxDistance = 0f;
-    public long distancePointBonus = 283;
-    private long nonDistanceScorePool = 0;
+    private float distancePerReward = 50f;
+    private float rewards = 0f;
 
     public Transform GetTarget() {
         if (plantInstance != null) {
@@ -42,6 +44,7 @@ public class GameSceneManager : Singleton<GameSceneManager>
 
     void Awake() {
         plant_health = plant_maxHealth;
+        LowHealthVignette.SetActive(false);
     }
 
     void Start() {
@@ -62,8 +65,11 @@ public class GameSceneManager : Singleton<GameSceneManager>
     }
 
     void UpdateScore() {
-        long score = (long) nonDistanceScorePool + Convert.ToInt64(distancePointBonus * maxDistance);
-        OnScoreChange?.Invoke(score);
+        float rewardsEarned = Mathf.Floor(maxDistance / distancePerReward);
+        if (rewardsEarned > rewards) {
+            rewards = rewardsEarned;
+            OnScoreChange?.Invoke((long) rewards);
+        }
     }
  
     private void SubscribeToEvents() {
@@ -128,7 +134,11 @@ public class GameSceneManager : Singleton<GameSceneManager>
 
      private void AdjustPlantHealth(int adjustment) {
          if (!plant_isAlive) return;
+         if (plant_health < plant_maxHealth && plant_health + adjustment >= plant_maxHealth){
+             OnPlantHealthFilled?.Invoke();
+         }
          plant_health = Mathf.Clamp(plant_health + adjustment, 0, plant_maxHealth);
+         LowHealthVignette.SetActive(plant_health < 255);
          OnPlantHealthChange?.Invoke(plant_health, plant_maxHealth);
          if (plant_health == 0) {
             KillPlant();

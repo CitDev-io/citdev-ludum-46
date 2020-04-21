@@ -24,6 +24,21 @@ public class AudioManager : Singleton<AudioManager>
         EventManager.Instance.OnPlayerPickupPlantSuccess += HandlePickedUpPlant;
         EventManager.Instance.OnPlantDied += HandlePlantDeath;
         EventManager.Instance.OnBadGuyDied += HandleBadGuyDied;
+        EventManager.Instance.OnPlantHealthFilled += HandlePlantHealthFilled;
+        EventManager.Instance.OnButtonClick += HandleButtonClick;
+        EventManager.Instance.OnPayAnimation += HandlePayAnimation;
+    }
+
+    void HandlePayAnimation() {
+        PlaySound("Coin_up");
+    }
+
+    void HandleButtonClick() {
+        PlaySound("Button_Press");
+    }
+
+    void HandlePlantHealthFilled() {
+        PlaySound("Planty_Full");
     }
 
     void HandleJump() {
@@ -43,21 +58,21 @@ public class AudioManager : Singleton<AudioManager>
     }
 
     void HandleStoppedShooting() {
-        PlaySound("Firing_Stops");
+        // PlaySound("Firing_Stops");
     }
 
     void HandleDroppedPlant(Vector3 position) {
         PlaySound("Plant_Dropped");
 
         backgroundMusicAS.time = 0f;
-        backgroundMusicAS2.volume = 0.125f;
+        backgroundMusicAS2.volume = 0.05f;
         // backgroundMusicAS2.Pause();
         backgroundMusicAS.Play();
     }
 
     void HandlePickedUpPlant() {
         PlaySound("Plant_PickedUp");
-        backgroundMusicAS2.volume = 0.3f;
+        backgroundMusicAS2.volume = 0.1f;
         backgroundMusicAS.Stop();
     }
 
